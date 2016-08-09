@@ -1,0 +1,379 @@
+<!--
+/************************************************************************
+* Name   : ViewRuleSet_V2                                               *
+* Author : Sujila R Nair                                                *
+* Desc   : View details of a selected Ruleset Version                   *
+* ----------------------------------------------------------------------*
+* Developer     |  Date        |  Description                           *
+* ----------------------------------------------------------------------*
+* Sujila R Nair |  04/22/2016  |  Original Version                      *
+*************************************************************************/
+-->
+<apex:page showHeader="false" sidebar="false" Controller="ViewRuleSetController_V2"  
+           standardStylesheets="false" docType="html-5.0" > 
+    <c:RulesUtilities />
+    <c:RulesNavbar_V2 />
+    <apex:stylesheet value="{!$Resource.RulesCustomCSS}"/>
+    <apex:includeScript value="https://code.jquery.com/jquery-1.12.0.min.js"/>
+    <apex:includeScript value="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"/>
+    <apex:includeScript value="https://cdn.datatables.net/fixedcolumns/3.2.1/js/dataTables.fixedColumns.min.js"/>
+    <apex:stylesheet value="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/>
+    <apex:stylesheet value="https://cdn.datatables.net/fixedcolumns/3.2.1/css/fixedColumns.dataTables.min.css"/>
+    <style>
+        body { padding-bottom: 70px; padding-top: 70px; }
+        th, td { text-align: left; }
+        div.dataTables_wrapper {
+        width: 100%;
+        margin: 0 auto;
+        }
+        table.DTFC_Cloned thead
+		 {
+			background-color: #99ccff;
+		}
+		table.DTFC_Cloned tfoot{
+			background-color: #e6f2ff; 
+		}
+    </style>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var table = $('#example').DataTable( {
+            scrollY:        '45vh',
+            scrollX:        true,
+            scrollCollapse: true,
+            paging:         false,
+            "order": [],
+            columnDefs: [{ width: '20%', targets: 1 }],
+            "bSort": false,
+            fixedColumns:   {
+                leftColumns: 2
+            }
+        } );
+    } );
+    
+    
+    function filterColumn (i) {  
+        $('[id$="example"]').DataTable().columns(6).search(i.value,true,false).draw();
+    }
+    </script>
+    
+    <div class="container-fluid">
+        <apex:form styleClass="form-horizontal" id="rulesetform">
+            <apex:outputPanel id="ContextPanel" rendered="{!showContextPanel}">
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">Context Information </font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right"></div>
+                    </div>
+                    <div class="form-group">
+                    	<!-- Ruleset ID -->
+                    	<div class="row top-buffer "  style="margin-top:10px ">
+                            <div class="col-sm-2 ">
+                                <label  class="col-sm-12 control-label">RuleSet ID</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Name}" styleClass="form-control" />
+                            </div>
+                            
+                        </div>
+                        <!-- Ruleset  Name -->
+                        <div class="row top-buffer "  style="margin-top:5px ">
+                            <div class="col-sm-2 ">
+                                <label class="col-sm-12 control-label">RuleSet Name</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.RuleSet_Name__c}" styleClass="form-control" />
+                            </div>
+                        </div>
+                        <!-- Effective Start Date -->
+                        <div class="row top-buffer" style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Effective Start Date</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!ruleset.Effective_Start_Date__c}" styleClass="form-control" showDatePicker="false" />
+                            </div>
+                        </div>
+                        <!-- Effective End Date -->
+                        <div class="row top-buffer" style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Effective End Date</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!ruleset.Effective_End_Date__c}" styleClass="form-control" showDatePicker="false" />
+                            </div> 
+                        </div>
+                        <!-- Version -->
+                        <div class="row top-buffer "  style="margin-top:5px ">
+                            <div class="col-sm-2 ">
+                                <label for="RuleSetName"  class="col-sm-12 control-label">Version</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Version__c}" styleClass="form-control" />
+                            </div>
+                        </div>
+                        <!-- Number of Rules --> 
+                        <div class="row top-buffer" style="margin-top:5px">
+                        	<div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Number of Rules</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!numberofRules}" styleClass="form-control" />
+                            </div> 
+                        </div>
+                        <!-- Inputs -->
+                        <div class="row top-buffer"  style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Inputs</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!selectedsObject}" styleClass="form-control" />
+                            </div>
+                        </div>
+						<!-- Status -->
+                        <div class="row top-buffer "  style="margin-top:5px ">
+                            <div class="col-sm-2 ">
+                                <label for="RuleSetName"  class="col-sm-12 control-label">Status</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Status__c}" styleClass="form-control" />
+                            </div>
+                        </div> 
+                        <nav class="navbar navbar-default1 navbar-fixed-bottom">
+ 	                       <div class="container" style="text-align:center;"> 
+    	                       <div class="btn-group btn-group-md">
+                                <br/>
+  	                            	<apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                    	<span class="glyphicon glyphicon-home" />
+                                    </apex:commandlink>
+                                    <apex:commandButton value="Next" styleClass="btn btn-next" action="{!navigateToConditionPanel}"/>
+                                </div>
+                            </div>  
+                            <br/>
+                        </nav>
+                    </div>
+                </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="ConditionPanel" rendered="{!showConditionPanel}"> 
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">List of Conditions</font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right">
+                            <a data-toggle="modal" data-target="#myModal" style="float:right;cursor:pointer;">
+                                <span class="glyphicon glyphicon-info-sign" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Conditions and Actions</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <c:RulesInfo_Conditions />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <apex:outputPanel id="DefineConditionPanel">
+                    	<apex:outputPanel rendered="{!noCondition}"> 
+                            <div class="col-sm-12" align="center">
+                                No Conditions added yet!
+                            </div>
+                        </apex:outputPanel>
+                        <div id="ConditionDiv" style="overflow-y:auto;height:60vh">
+                            <table id="conditionTable" class="table table-condensed table-hover table-bordered" >
+                                <tr>
+                                   <thead bgcolor="#99ccff" style="text-align:center">
+                                        <th style="text-align:center;width:50%">Condition Field and Reference Field</th>
+                                        <th style="text-align:center;width:50%">Condition Operator and Condition Value</th>
+                                    </thead>
+                                </tr>
+                                <apex:repeat value="{!conditionList}" var="condition">
+                                    <tr>
+                                        <td>
+                                            <div class="col-xs-6"><apex:outputText value="{!condition.FieldName}" styleClass="form-control"/></div>
+                                            <div class="col-xs-6"><apex:outputText value="{!condition.ParentFieldName}" styleClass="form-control"/></div>
+                                        </td>
+                                        <td><apex:outputText value="{!condition.Value}" styleclass="form-control" /></td>
+                                    </tr>
+                                </apex:repeat>
+                            </table>
+                        </div>
+                    </apex:outputPanel>
+       				<nav class="navbar navbar-default1 navbar-fixed-bottom">
+                        <div class="container" style="text-align:center;"> 
+                            <div class="btn-group btn-group-md">
+                                <br/>
+                                <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                    <span class="glyphicon glyphicon-home" />
+                                </apex:commandlink>
+                                <apex:commandButton value="Previous" title="Back to Previous Page" styleClass="btn btn-previous" action="{!navigateToContextPage}" />
+                                <apex:commandButton value="Next" styleClass="btn btn-next" action="{!navigateToActionPanel}" />
+                            </div>
+                        </div> 
+                        <br/>
+                    </nav>                    
+
+                </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="ActionPanel" rendered="{!showActionPanel}">
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">List of Actions</font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right">
+                            <a data-toggle="modal" data-target="#myModal" style="float:right;cursor:pointer;">
+                                <span class="glyphicon glyphicon-info-sign" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Conditions and Actions</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <c:RulesInfo_Actions />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <apex:outputPanel id="DefineActionPanel">
+                    	<apex:outputPanel rendered="{!noAction}"> 
+                            <div class="col-sm-12" align="center">
+                                No Actions added yet!
+                            </div>
+                        </apex:outputPanel>
+                        <div id="ActionDiv" style="overflow-y:auto;height:60vh">
+                            <table id="actionTable" class="table table-condensed table-hover table-bordered" >
+                                <tr>
+ 									<thead bgcolor="#99ccff" style="text-align:center;">
+                                        <th style="text-align:center;width:15%">Type of Action</th>
+                                        <th style="text-align:center;width:20%">Result Object</th>
+                                        <th style="text-align:center;width:20%">Field</th>
+                                        <th style="text-align:center;width:45%">Value</th>
+                                    </thead>
+                                </tr>
+                                <apex:repeat value="{!ActionList}" var="action">
+                                    <tr>
+                                        <td><apex:outputText value="{!action.Type}" styleClass="form-control"/></td>
+                                        <td><apex:outputText value="{!action.resultObject}" styleClass="form-control"/></td>
+                                        <td><apex:outputText value="{!action.Field}" styleClass="form-control"/></td>
+                                        <td><apex:outputText value="{!action.Value}" styleClass="form-control"/></td>
+                                    </tr>
+                                </apex:repeat>
+                            </table>
+                        </div>
+                    </apex:outputPanel>
+                     <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                        <div class="container" style="text-align:center;"> 
+                            <div class="btn-group btn-group-md">
+                                <br/>
+                                <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                    <span class="glyphicon glyphicon-home" />
+                                </apex:commandlink>
+                                <apex:commandButton value="Previous" title="Back to Previous Page" styleClass="btn btn-default" action="{!navigateToConditionPage}" />
+                                <apex:commandButton value="Next" styleClass="btn btn-next" action="{!navigateToRulePanel}" />
+                            </div>
+                        </div> 
+                        <br/>
+                    </nav>                   
+                </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="RulePanel" rendered="{!showRulesPanel}">
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">Rule Definitions </font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <apex:outputPanel id="RulesTablePanel" >
+                            <div id="ruleDiv1" class="table-responsive">
+                              <table id="example" class="table display" style="width: 100%;">
+                                <thead bgcolor="#99ccff">
+                                	<tr>
+                                    	<th><apex:outputText >Type</apex:outputText></th>
+                                    	<th><apex:outputText >Conditions and Actions</apex:outputText></th>
+                                    	<apex:repeat value="{!ruleList}" var="rule">
+                                        	<th style="text-align:center"><apex:inputText value="{!rule.Name}" title="{!rule.Name}" disabled="true" /></th>
+                                    	</apex:repeat>
+                                	</tr>
+                                </thead>
+                                <tbody>
+                                <apex:repeat value="{!ConditionList}" var="condition">
+                                    <tr>
+                                        <td>
+                                            <b><apex:outputText value="Condition" /></b>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!condition.ConditionPretty}" />
+                                        </td>
+                                        <apex:repeat value="{!ruleList}" var="rule">
+                                            <td><apex:inputCheckbox value="{!rule.ConditionMap[condition.Identifier]}" title="{!condition.ConditionPretty}" /></td>
+                                        </apex:repeat>
+                                    </tr>
+                                </apex:repeat>
+                                
+                                <apex:repeat value="{!ActionList}" var="action">
+                                    <tr>
+                                        <td>
+                                            <b><apex:outputText value="Action" /></b>
+                                        </td>
+                                        <td>
+                                            <apex:outputText value="{!action.Type}"/><br/>
+                                            <apex:outputText value="{!action.resultObject}"/><br/>
+                                            <apex:outputText value="{!action.Field}"/><br/>
+                                            <apex:outputText value="{!action.Value}"/>
+                                        </td>
+                                        <apex:repeat value="{!ruleList}" var="rule">
+                                            <td class="action-column">
+                                                <apex:outputText title="Action Order Number" value="{!rule.ActionOrder[action.Identifier]}" />
+                                                &nbsp;&nbsp;
+                                                <apex:inputCheckbox title="{!action.ActionPretty}" value="{!rule.ActionMap[action.Identifier]}" />
+                                            </td>
+                                        </apex:repeat>
+                                    </tr>
+                                </apex:repeat>
+                            	</tbody>
+                            </table>
+                            </div>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+                <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                    <div class="container" style="text-align:center;"> 
+                        <div class="btn-group btn-group-md">
+                            <br/>
+                            <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                <span class="glyphicon glyphicon-home" />
+                            </apex:commandlink>
+                        </div>
+                    </div> 
+                    <br/>
+                </nav>
+            </apex:outputPanel> 
+        </apex:form>
+    </div>
+    
+    
+</apex:page>

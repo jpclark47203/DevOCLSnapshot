@@ -1,0 +1,4 @@
+A complaint was received for {!Case.CLQ_Program_Name_Formula__c}, {!Case.CLQ_Program_Number_Formula__c} on {!Case.CLQ_Intake_Date__c}.  Please see the attached document or log in at (insert OCLQS Licensing link here) to view the complaint details.
+
+ATTACHED DOCUMENTS:
+PDF copy of the complaint.

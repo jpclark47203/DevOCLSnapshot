@@ -1,0 +1,37 @@
+<apex:page sidebar="true" controller="Integration_CBOSS_PaymentRequest" showHeader="true" standardStylesheets="false" docType="html-5.0" applyHtmlTag="true" applyBodyTag="false">
+    <html lang='en'>
+
+      <head>
+          <meta charset="UTF-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <title>TEST- CBOSS Integration Payment Gateway</title>
+      </head>
+     
+         <apex:form id="cboss_form" styleClass="animated-form">    
+         
+         <apex:pageBlock >
+         <apex:pageBlockSection title="Payment Details" columns="1">
+                <apex:inputText value="{!billingFName}" id="theTextInput1" label="First Name"/>
+                <apex:inputText value="{!billingMName}" id="theTextInput14" label="Middle Name"/>
+                <apex:inputText value="{!billingLName}" id="theTextInput2" label="Last Name"/>
+               <apex:inputText value="{!billingEmail}" id="theTextInput12" label="Email"/>                
+                <apex:inputText value="{!billingAmount}" id="theTextInput3" label="Payment Amount"/>
+                <apex:inputText value="{!billingAddLine1}" id="theTextInput4" label="Address Line 1"/>
+                <apex:inputText value="{!billingAddLine2}" id="theTextInput5" label="Address Line 2"/>
+                <apex:inputText value="{!billingAddCity}" id="theTextInput6" label="City"/>
+                <apex:inputText value="{!billingAddState}" id="theTextInput8" label="State"/>
+                <apex:inputText value="{!billingAddPhone}" id="theTextInput9" label="Phone"/>
+                <apex:inputText value="{!billingAddZip}" id="theTextInput10" label="Postal Code"/>
+                <apex:inputText value="{!billingAddCountry}" id="theTextInput7" label="Country"/>
+                
+                <apex:outputPanel id="processRegion">
+                      <p class="redirected">You will be redirected to a payment gateway to complete this transaction</p>
+                      <apex:commandButton value="Make Online Payment" action="{!redirectToPaymentGateway}" styleClass="btn btn-primary btn-spacing" />
+                </apex:outputPanel>
+                    
+        </apex:pageBlockSection>
+         </apex:pageBlock>
+         
+         </apex:form>
+   </html>
+</apex:page>

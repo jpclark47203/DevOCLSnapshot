@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Notification on initial submission of complaint report - JFS</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>JFS Notification on initial submission of complaint report</name>
+    <style>none</style>
+    <subject>Complaint received for {!Case.CLQ_Program_Name_Formula__c},{!Case.CLQ_Program_Number_Formula__c} on {!Case.CLQ_Intake_Date__c}</subject>
+    <type>text</type>
+</EmailTemplate>

@@ -1,0 +1,611 @@
+<!--
+/************************************************************************
+* Name   : CreateRuleSet_V2                                             *
+* Author : Sujila R Nair                                                *
+* Desc   : Create/Edit Ruleset Versions                                 *
+* ----------------------------------------------------------------------*
+* Developer     |  Date        |  Description                           *
+* ----------------------------------------------------------------------*
+* Sujila R Nair |  04/22/2016  |  Original Version                      *
+* Sujila R Nair |  05/06/2016  |  Adding Duplicate Check Action         *  
+*************************************************************************/
+-->
+<apex:page showHeader="false" sidebar="false" Controller="RuleSetController_V2"  
+           standardStylesheets="false" docType="html-5.0" action="{!redirectNewRuleset}">
+    <c:RulesUtilities />
+    <c:RulesNavbar_V2 />
+    <apex:stylesheet value="{!$Resource.RulesCustomCSS}"/>
+    <style>
+        body { padding-bottom: 70px; padding-top: 70px; }
+        th, td { text-align: left; }
+        div.dataTables_wrapper {
+        width: 100%;
+        margin: 0 auto;
+        }
+        table.DTFC_Cloned thead
+		 {
+			background-color: #99ccff;
+		}
+		table.DTFC_Cloned tfoot{
+			background-color: #e6f2ff; 
+		}
+    </style>
+    
+    <script type="text/javascript">
+    function myInit() {
+        $(document).ready(function() {
+            var table = $('#example').DataTable( {
+                scrollY:        '45vh',
+                scrollX:        true,
+                scrollCollapse: true,
+                paging:         false,
+                "order": [],
+                columnDefs: [{ width: '20%', targets: 1 }],
+                "bSort": false,
+                fixedColumns:   {
+                    leftColumns: 2
+                }
+            } );
+        } );
+        function filterColumn (i) {  
+            $('[id$="example"]').DataTable().columns(6).search(i.value,true,false).draw();
+        }
+    }
+    myInit();
+    </script>
+    <div class="container-fluid">
+        <apex:form styleClass="form-horizontal" id="rulesetform">
+            <div align="center"><apex:pageMessages escape="false"/></div>
+            <apex:outputPanel id="ContextPanel" rendered="{!showContextPanel}">
+                <div class="container-fluid" >
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">Context Information </font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right"></div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <div id="ContextDiv" style="height:60vh">
+                            <!-- Ruleset  Name -->
+                            <div class="row top-buffer "  style="margin-top:10px" >
+                                <div class="col-sm-2">
+                                    <label for="RuleSetName"  class="col-sm-12 control-label">RuleSet Name</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <apex:outputText value="{!ruleset.RuleSet_Name__c}" styleClass="form-control" title="Same as Catalog Name (Read-Only)" />
+                                </div>
+                            </div>
+                            <!-- Effective Start date -->
+                            <div class="row top-buffer"  style="margin-top:10px">
+                                <div class="col-sm-2">
+                                    <label for="Startdate"  class="col-sm-12 control-label">Effective Start Date<font color="red">*</font></label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <apex:inputField value="{!ruleset.Effective_Start_Date__c}" styleClass="form-control" type="date" showDatePicker="false"  />
+                                </div>
+                            </div>    
+                            <!-- Effective End date -->
+                            <div class="row top-buffer"  style="margin-top:10px ">
+                                <div class="col-sm-2">
+                                    <label for="Enddate"  class="col-sm-12 control-label">Effective End Date</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <apex:inputField value="{!ruleset.Effective_End_Date__c}" styleClass="form-control" type="date" showDatePicker="false"  />
+                                </div>
+                            </div>
+                            <!-- Rule Primary Input Object --> 
+                            <div class="row top-buffer"  style="margin-top:10px ">
+                                <div class="col-sm-2">
+                                    <label for="execution"  class="col-sm-12 control-label">Input Object<font color="red">*</font></label>
+                                </div>
+                                <apex:outputPanel id="ShowAllPanel">
+                                    <div class="col-sm-4"> 
+                                        <apex:selectList styleClass="form-control" value="{!selectedsObject}" size="1" required="false" id="select2">
+                                            <apex:selectOption itemLabel="None" itemValue="None"/>
+                                            <apex:selectOptions value="{!allCustomObjects}" rendered="{!showAllObjects}"/>
+                                            <apex:selectOptions value="{!allObjects}" rendered="{!NOT(showAllObjects)}" />
+                                        </apex:selectList>
+                                    </div>
+                                </apex:outputPanel>
+                                <div class="col-xs-1">
+                                    <apex:inputCheckbox title="Select to show all objects from Schema" value="{!showAllObjects}" >
+                                        <apex:actionsupport event="onchange" rerender="ShowAllPanel" />
+                                    </apex:inputCheckbox>
+                                </div>
+                            </div>
+                            <!-- Status -->
+                            <div class="row top-buffer"  style="margin-top:10px ">
+                                <div class="col-sm-2">
+                                    <label for="Enddate"  class="col-sm-12 control-label">Status</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <apex:outputText value="Active" styleClass="form-control" rendered="{!IF(ruleset.Active__c == true, true, false)}"/>
+                                    <apex:outputText value="Draft" styleClass="form-control" rendered="{!IF(ruleset.Active__c == true, false, true)}"/>
+                                </div>
+                            </div>
+                            <!-- Version -->
+                            <div class="row top-buffer"  style="margin-top:10px ">
+                                <div class="col-sm-2">
+                                    <label for="Enddate"  class="col-sm-12 control-label">Version</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <apex:outputText value="{!ruleset.Version__c}" styleClass="form-control" rendered="{!IF(ruleset.Version__c != null, true, false)}"/>
+                                    <apex:outputText value="Not Available" styleClass="form-control" rendered="{!IF(ruleset.Version__c == null, true, false)}"/>
+                                </div>
+                            </div>
+                            <apex:outputPanel rendered="{!showRefresh}">
+                                <div class="row top-buffer"  style="margin-top:10px ">
+                                    <div class="col-sm-2">
+                                        <label for="execution"  class="col-sm-12 control-label">Compile Status</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <apex:outputText value="{!ruleset.Status__c}" styleClass="form-control" />
+                                    </div>
+                                    <div class="col-sm-2" align="left">
+                                        <apex:commandlink action="{!updateClassStatus}" title="Refresh Compile Status" reRender="ContextPanel" rendered="{!showRefresh}">
+                                            <span class="glyphicon glyphicon-refresh" />
+                                        </apex:commandlink>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!showTestRefresh}">
+                                <div class="row top-buffer"  style="margin-top:5px">
+                                    <div class="col-sm-2">
+                                        <label class="col-sm-12 control-label">Test Class Status</label>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <apex:outputText value="{!ruleset.Test_Class_Status__c}" styleClass="form-control" />
+                                    </div>
+                                    <div class="col-sm-2" align="left">
+                                        <apex:commandlink action="{!updateTestClassStatus}" title="Refresh Compile Status" reRender="ContextPanel" rendered="{!showTestRefresh}">
+                                            <span class="glyphicon glyphicon-refresh" />
+                                        </apex:commandlink>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                        </div>
+                        <!-- this is to create a new Ruleset record -->
+                        <apex:outputPanel id="InsertbuttonPanel" >
+                            <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                                <div class="container" style="text-align:center;"> 
+                                    <div class="btn-group btn-group-md">
+                                        <br/>
+                                        <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                            <span class="glyphicon glyphicon-home" />
+                                        </apex:commandlink>
+                                        <apex:commandButton value="Next" styleClass="btn btn-next" action="{!CreateOrUpdateRuleSet}" disabled="{!IF(ruleset.Status__c == 'Queued',true, false)}" />
+                                    </div>
+                                </div>  
+                                <br/>
+                            </nav>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="ConditionPanel" rendered="{!showConditionPanel}"> 
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">Configure Conditions</font></h4><h5><font color="#053f9d"> ({!selectedsObject})</font></h5></b>
+                        </div>
+                        <div class="col-sm-2" align="right">
+                            <apex:commandLink action="{!AddCondition}" reRender="DefineConditionPanel" styleClass="btn btn-primary btn-sm" >
+                            <span class="glyphicon glyphicon-plus" />&nbsp;Add Condition
+                            </apex:commandLink>
+                            &nbsp;&nbsp;
+                            <a data-toggle="modal" data-target="#myModal" style="float:right;cursor:pointer;">
+                                <span class="glyphicon glyphicon-info-sign" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" style="width: 850px" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Defining Conditions</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <c:RulesInfo_Conditions />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <apex:outputPanel id="DefineConditionPanel">
+	                    <apex:outputPanel rendered="{!noCondition}"> 
+                            <div class="col-sm-12" align="center">
+                                No Conditions added yet!
+                            </div>
+                        </apex:outputPanel>
+                        <div id="ConditionDiv" style="overflow-y:auto;height:60vh">
+                            <table id="conditionTable" class="table table-condensed table-hover table-bordered" >
+                                <tr>
+                                    <thead bgcolor="#99ccff" style="text-align:center">
+                                        <th style="text-align:center;width:50%">Condition Field and Reference Field</th>
+                                        <th style="text-align:center;width:55%">Condition Operator and Condition Value</th>
+                                        <th style="text-align:center;width:5%"></th>
+                                    </thead>
+                                </tr>
+                                <apex:variable var="cIndex" value="{!0}"/>
+                                <apex:repeat value="{!conditionList}" var="condition">
+                                    <tr>
+                                        <td>
+                                            <div class="col-xs-6">
+                                                <apex:selectList styleClass="form-control" value="{!condition.FieldName}" size="1" >
+                                                    <apex:actionSupport event="onchange" reRender="parentfieldtypePanel,fieldtypePanel"/>
+                                                    <apex:selectOption itemLabel="--Select Field--" itemValue="None" />
+                                                    <apex:selectOptions value="{!InputObjFields}"></apex:selectOptions>
+                                                </apex:selectList>
+                                            </div>
+                                            <div class="col-xs-5">
+                                                <apex:outputPanel id="parentfieldtypePanel">
+                                                    <apex:selectList styleClass="form-control" value="{!condition.ParentFieldName}" size="1" rendered="{!NOT(condition.multiParentField)}">
+                                                        <apex:selectOption itemLabel="None" itemValue="None"  />
+                                                        <apex:selectOptions value="{!parentFieldsMap[condition.FieldName]}" />
+                                                    </apex:selectList>
+                                                    <apex:inputText value="{!condition.ParentFieldName}" html-placeholder="Custom Condition Field" rendered="{!condition.multiParentField}" styleClass="form-control"/>
+                                                </apex:outputPanel>
+                                            </div>
+                                            <div class="col-xs-1">
+                                                <apex:inputCheckbox title="Multiparent Field" value="{!condition.multiParentField}">
+                                                    <apex:actionsupport event="onchange" rerender="parentfieldtypePanel" />
+                                                </apex:inputCheckbox>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <apex:outputPanel id="fieldtypePanel">
+                                                <apex:inputText value="{!condition.Value}" title="{!conditionFieldtoTypeMap[condition.FieldName]}" styleclass="form-control" html-placeholder="Condition Alternative" />
+                                            </apex:outputPanel>
+                                        </td>
+                                                                           
+                                        <td>
+                                            <apex:commandLink action="{!DeleteCondition}" reRender="DefineConditionPanel" >
+                                                <span class="glyphicon glyphicon-trash" style="color:#A90000"></span>
+                                                <apex:param name="conditionIndex" value="{!cIndex}" assignTo="{!conditionIndex}"/>
+                                            </apex:commandLink>
+                                        </td>
+                                    </tr>
+                                    <apex:variable var="cIndex" value="{!cIndex+1}"/>
+                                </apex:repeat>	
+                            </table>
+                        </div>
+                        
+                    </apex:outputPanel>
+                    <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                        <div class="container" style="text-align:center;"> 
+                            <div class="btn-group btn-group-md">
+                                <br/>
+                                
+                                <apex:commandButton value="Back" title="Back to Previous Page" styleClass="btn btn-next" action="{!navigateToContextPage}" />
+                                <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                    <span class="glyphicon glyphicon-home" />
+                                </apex:commandlink>
+                                <apex:commandButton value="Next" styleClass="btn btn-next" action="{!saveConditions}" />
+                            </div>
+                        </div> 
+                        <br/>
+                    </nav>
+                </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="ActionPanel" rendered="{!showActionPanel}">
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">Conifgure Actions</font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right">
+                            <apex:commandLink action="{!addAction}" reRender="DefineActionPanel" styleClass="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-plus" />&nbsp;Add Action
+                            </apex:commandLink>
+                            &nbsp;&nbsp;
+                            <a data-toggle="modal" data-target="#myModal" style="float:right;cursor:pointer;">
+                                <span class="glyphicon glyphicon-info-sign" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" style="width: 850px" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Defining Actions</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <c:RulesInfo_Actions />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <apex:outputPanel id="DefineActionPanel">
+                        <apex:outputPanel rendered="{!noAction}"> 
+                            <div class="col-sm-12" align="center">
+                                No Actions added yet!
+                            </div>
+                        </apex:outputPanel>
+                        <div id="ActionDiv" style="overflow-y:auto;height:60vh">
+                            <table id="actionTable" class="table table-condensed table-hover table-bordered" >
+                                <tr>
+                                    <thead bgcolor="#99ccff" style="text-align:center;">
+                                        <th style="text-align:center;width:15%">Type of Action</th>
+                                        <th style="text-align:center;width:20%">Result Object</th>
+                                        <th style="text-align:center;width:20%">Field</th>
+                                        <th style="text-align:center;width:40%">Value</th>
+                                        <th style="text-align:center;width:5%"></th>
+                                    </thead>
+                                </tr>
+                                <apex:variable var="aIndex" value="{!0}"/>
+                                
+                                <apex:repeat value="{!ActionList}" var="action">
+                                    <tr>
+                                        <td>
+                                            <apex:selectList styleClass="form-control" value="{!action.Type}" size="1" >
+                                                <apex:selectOption itemLabel="Not Selected" itemValue="" />
+                                                <!--<apex:selectOption itemLabel="Duplicate Check" itemValue="Duplicate Check"/>-->
+                                                <apex:selectOption itemLabel="Add Record" itemValue="Add Record"/>
+                                                <apex:selectOption itemLabel="Update Field" itemValue="Update Field"/>
+                                                <apex:selectOption itemLabel="Update Input" itemValue="Update Input"/>
+                                            </apex:selectList>
+                                        </td>
+                                        <td>
+                                           	<apex:selectList styleClass="form-control" value="{!action.resultObject}" size="1">
+                                               	<apex:actionSupport event="onchange" reRender="ActionFieldPanel" action="{!updateFieldMap}">
+                                                    <apex:param name="actionId" value="{!aIndex}" assignTo="{!actionIndex}"/>
+                                                </apex:actionSupport>
+                                               	<apex:selectOption itemLabel="Not Selected" itemValue="None" />
+                                                <apex:selectOptions value="{!allObjects}"></apex:selectOptions>
+                                           	</apex:selectList>
+                                        </td>
+                                        <td>
+                                            <apex:outputPanel id="ActionFieldPanel">
+                                                <apex:selectList styleClass="form-control" value="{!action.Field}" size="1" >
+                                                    <apex:selectOptions value="{!allFieldsMap[action.resultObject]}"></apex:selectOptions>
+                                                    <!--<apex:selectOptions value="{!relatedFields}"></apex:selectOptions>-->
+                                                </apex:selectList>
+                                            </apex:outputPanel>
+                                        </td> 
+                                        <td>
+                                            <apex:inputText value="{!action.Value}" title="{!action.Value}" styleClass="form-control" html-placeholder="Action Value"/>
+                                        </td>
+                                        <td>
+                                            <apex:commandLink action="{!deleteAction}" reRender="DefineActionPanel">
+                                                <span class="glyphicon glyphicon-trash" style="color:#A90000"></span>
+                                                <apex:param name="aId" value="{!aIndex}" assignTo="{!actionIndex}"/>
+                                            </apex:commandLink>
+                                        </td>
+                                    </tr>
+                                    <apex:variable var="aIndex" value="{!aIndex+1}"/>    
+                                </apex:repeat>
+                            </table>
+                        </div>
+                        
+                    </apex:outputPanel>
+                    <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                        <div class="container" style="text-align:center;"> 
+                            <div class="btn-group btn-group-md">
+                                <br/>
+                                <apex:commandButton value="Back" title="Back to Previous Page" styleClass="btn btn-next" action="{!navigateToConditionPage}" />
+                                <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                    <span class="glyphicon glyphicon-home" />
+                                </apex:commandlink>
+                                <apex:commandButton value="Next" styleClass="btn btn-next" action="{!saveActions}" />
+                            </div>
+                        </div> 
+                        <br/>
+                    </nav>
+                </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel id="RulePanel" rendered="{!showRulesPanel}">
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">Configure Rules </font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right">
+                            <apex:commandLink styleClass="btn btn-primary btn-sm" action="{!AddNewRule}" reRender="RulesTablePanel" oncomplete="myInit();">
+                                <span class="glyphicon glyphicon-plus" />&nbsp;New Rule
+                            </apex:commandLink>
+                            
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <apex:outputPanel id="RulesTablePanel" >
+                            <div id="ruleDiv1" class="table-responsive">
+                              <table id="example" class="table display" style="width: 100%;">
+                                <thead bgcolor="#99ccff">
+                                <tr>
+                                    <th><apex:outputText >Type</apex:outputText></th>
+                                    <th><apex:outputText >Conditions and Actions</apex:outputText></th>
+                                    <apex:repeat value="{!ruleList}" var="rule">
+                                        <th><apex:inputText value="{!rule.Name}" title="{!rule.Name}" html-placeholder="Rule Name" style="border: none" /></th>
+                                    </apex:repeat>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                
+                                <apex:repeat value="{!ConditionList}" var="condition">
+                                    <tr>
+                                        <td>
+                                            <b><apex:outputText value="Condition" /></b>
+                                        </td>
+                                        <td Style="text-align:left">
+                                            <apex:outputText value="{!condition.ConditionPretty}" />
+                                        </td>
+                                        <apex:repeat value="{!ruleList}" var="rule">
+                                            <td><apex:inputCheckbox value="{!rule.ConditionMap[condition.Identifier]}" title="{!condition.ConditionPretty}"  /></td>
+                                        </apex:repeat>
+                                    </tr>
+                                </apex:repeat>
+                                
+                                <apex:repeat value="{!ActionList}" var="action">
+                                    <tr>
+                                        <td>
+                                            <b><apex:outputText style="text-align:center;" value="Action" /></b>
+                                        </td>
+                                        <td Style="text-align:left">
+                                            <apex:outputText value="{!action.Type}" /><br/>
+                                            <apex:outputText value="{!action.resultObject}" /><br/>
+                                            <apex:outputText value="{!action.Field}" /><br/>
+                                            <apex:outputText value="{!action.Value}" />
+                                        </td>
+                                        <apex:repeat value="{!ruleList}" var="rule">
+                                            <td class="action-column">
+                                                <apex:inputText title="Action Order Number" value="{!rule.ActionOrder[action.Identifier]}" html-placeholder="Order"  size="1"/>
+                                                &nbsp;&nbsp;
+                                                <apex:inputCheckbox title="{!action.ActionPretty}" value="{!rule.ActionMap[action.Identifier]}" />
+                                            </td>
+                                        </apex:repeat>
+                                    </tr>
+                                </apex:repeat>
+                              
+                                </tbody> 
+                                  <tfoot bgcolor="#e6f2ff" style="border: none;">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <apex:variable var="ruleId" value="{!0}"/>
+                                    <apex:repeat value="{!ruleList}" var="rule">
+                                        <td class="action-delete-column">
+                                            <apex:commandLink action="{!clearRule}" reRender="RulesTablePanel" oncomplete="myInit();" title="Clear all Entries">
+                                                 <span class="glyphicon glyphicon-repeat" style="color:#1a8cff"></span>
+                                                <apex:param name="assignruleId" value="{!ruleId}" assignTo="{!Index}"/>
+                                            </apex:commandLink>
+                                            <apex:commandLink action="{!removeRule}" reRender="RulesTablePanel" oncomplete="myInit();" title="Delete Rule">
+                                                <span class="glyphicon glyphicon-trash" style="color:#A90000"></span>
+                                                <apex:param name="assignruleId" value="{!ruleId}" assignTo="{!Index}"/>
+                                            </apex:commandLink>
+                                        </td>
+                                        <apex:variable var="ruleId" value="{!ruleId+1}"/>
+                                    </apex:repeat>
+                                </tr>
+                                </tfoot>                                   
+                            </table>
+                            </div>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+                <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                    <div class="container" style="text-align:center;"> 
+                        <div class="btn-group btn-group-md">
+                            <br/>
+                            <apex:commandButton value="Back" title="Back to Previous Page" styleClass="btn btn-next" action="{!navigateToActionPage}" />
+                            <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                <span class="glyphicon glyphicon-home" />
+                            </apex:commandlink>
+                            <apex:commandButton value="Next" styleClass="btn btn-next" action="{!SaveRules}" />
+                        </div>
+                    </div> 
+                    <br/>
+                </nav>
+            </apex:outputPanel> 
+            
+            <apex:outputPanel id="CompleteRuleSetPanel" rendered="{!showCompleteRuleSetPanel}">
+                <div class="container-fluid" >
+                    <div class="form-group" id="CompleteRuleDiv" style="overflow-y:auto;height:60vh;overflow-x: hidden;" >
+                        <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                            <div class="col-sm-10" >
+                                <b><h4> <font color="#053f9d">Review Ruleset </font></h4></b>
+                            </div>
+                            <div class="col-sm-2" align="right">
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row top-buffer" style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Ruleset Name</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.RuleSet_Name__c}" styleClass="form-control" />
+                            </div>
+                        </div> 
+                        <div class="row top-buffer" style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Number of Rules</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!numberofRules}" styleClass="form-control" />
+                            </div> 
+                        </div>
+                        <div class="row top-buffer" style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Class Name</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Class_Name__c}" styleClass="form-control" />
+                            </div> 
+                        </div>
+                        <div class="row top-buffer"  style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Class Status</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Status__c}" styleClass="form-control" />
+                            </div> 
+                            <div class="col-sm-2" align="left">
+                                <apex:commandlink action="{!updateClassStatus}" title="Refresh Compile Status" reRender="CompleteRuleSetPanel" rendered="{!showRefresh}">
+                                    <span class="glyphicon glyphicon-refresh" />
+                                </apex:commandlink>
+                            </div>
+                        </div>
+                        <div class="row top-buffer" style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Test Class Name</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Test_Class_Name__c}" styleClass="form-control" />
+                            </div> 
+                        </div>
+                        <div class="row top-buffer"  style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Test Class Status</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Test_Class_Status__c}" styleClass="form-control" />
+                            </div>
+                            <div class="col-sm-2" align="left">
+                                <apex:commandlink action="{!updateTestClassStatus}" title="Refresh Compile Status" reRender="CompleteRuleSetPanel" rendered="{!showTestRefresh}">
+                                    <span class="glyphicon glyphicon-refresh" />
+                                </apex:commandlink>
+                            </div>
+                        </div>
+                        <div class="row top-buffer"  style="margin-top:5px">
+                            <div class="col-sm-2">
+                                <label class="col-sm-12 control-label">Ruleset Active?</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputField value="{!ruleset.Active__c}" styleClass="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                        <div class="container" style="text-align:center;"> 
+                            <div class="btn-group btn-group-md">
+                                <br/>
+                                <apex:commandButton value="Back" title="Back to Previous Page" styleClass="btn btn-next" action="{!navigateToRulePanel}" />
+                                <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                    <span class="glyphicon glyphicon-home" />
+                                </apex:commandlink>
+                                <apex:commandButton value="Compile Ruleset" styleClass="btn btn-primary" action="{!CompileRuleSet}" disabled="{!IF(ruleset.Status__c == 'Queued',true, false)}" />
+                                <apex:commandLink styleClass="btn btn-success" action="{!ActivateRule}" rendered="{!IF(ruleset.Status__c == 'Compiled' && ruleset.Active__c != true, true, false)}" title="Activate Ruleset">
+                                    <span class="glyphicon glyphicon-ok" />
+                                </apex:commandLink>
+                                <apex:commandLink styleClass="btn btn-danger" action="{!ActivateRule}" rendered="{!IF(ruleset.Active__c == true, true, false)}" title="De-Activate Ruleset">
+                                    <span class="glyphicon glyphicon-stop" />
+                                </apex:commandLink>
+                            </div>
+                        </div> 
+                        <br/>
+                    </nav>
+                </div>
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+ </apex:page>

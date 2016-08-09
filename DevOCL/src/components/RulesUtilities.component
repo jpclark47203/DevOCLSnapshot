@@ -1,0 +1,24 @@
+<!--
+*************************************************************************
+* Name   : RulesUtilities                                               *
+* Author : Sujila R Nair                                                *
+* Desc   : Utility Component                                            *
+* ----------------------------------------------------------------------*
+* Developer     |  Date        |  Description                           *
+* ----------------------------------------------------------------------*
+* Sujila R Nair |  03/17/2016  |  Original Version                      *
+*************************************************************************
+-->
+<apex:component >
+    <apex:includeScript value="https://code.jquery.com/jquery-2.1.4.min.js"/>
+    <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/cerulean/bootstrap.min.css"/>
+    <apex:includeScript value="https://code.jquery.com/jquery-1.12.0.min.js"/>
+    <apex:includeScript value="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"/>
+    <apex:includeScript value="https://cdn.datatables.net/fixedcolumns/3.2.1/js/dataTables.fixedColumns.min.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"/>
+    <apex:stylesheet value="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/>
+    <apex:stylesheet value="https://cdn.datatables.net/fixedcolumns/3.2.1/css/fixedColumns.dataTables.min.css"/>
+    <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css"/>
+    
+</apex:component>

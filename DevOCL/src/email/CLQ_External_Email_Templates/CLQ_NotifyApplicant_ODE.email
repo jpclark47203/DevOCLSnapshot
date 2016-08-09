@@ -1,0 +1,20 @@
+{!CLQ_Program__c.Name} ({!CLQ_Program__c.CLQ_Program_Number__c}) ,{!CLQ_Program__c.CLQ_Associated_Organization__c} submitted documents for initial licensing that did not meet requirements for a provisional license. 
+
+Below are the documents that require your attention 
+
+{!CLQ_Transaction_Document__c.Name} 
+
+To review and make revisions to your submitted documents: 
+Log into OCLQS. 
+Select the “View my Licensing Activities” link on the OCLQS Home screen. 
+Select the Application # - ({!CLQ_Program__c.CLQ_Program_Number__c}) from the display Licensing Application Activities screen. 
+Select the Documentation tab on the left side of the screen. 
+Click "Returned for Revisions" in the Status column next to the document you wish to replace. 
+Attach a corrected document and click Save. 
+For each document that has "Returned for Revisions" in the Status column, click on "Returned for Revisions" link to replace the current document. 
+Once all revised documents have a status of "Attached" scroll to the bottom of the screen and select “Resubmit”. You will see the confirmation message "Documents resubmitted successfully." 
+The status of the submitted application will change to "Resubmitted".
+
+ODE Signature - The Licensing Online Team
+
+This e-mail message, including any attachments, is for the sole use of the intended recipient(s) and may contain private, confidential, and/or privileged information. Any unauthorized review, use, disclosure, or distribution is prohibited.

@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[<div><font face="Verdana, Helvetica, sans-serif" size="2"><span style="color: rgb(0, 0, 0); white-space: pre-wrap; background-color: rgb(255, 255, 255);">A Change of Administrator amendment request was successfully submitted on </span><span style="white-space: pre-wrap;">{!CLQ_Program_Transaction__c.CLQ_Submission_Date__c} for </span><font style="color: rgb(0, 0, 0);">{!CLQ_Program_Transaction__c.CLQ_Program_Name__c}, {!CLQ_Program_Transaction__c.CLQ_OOS_Program_Number__c}&nbsp;</font><span style="white-space: pre-wrap; background-color: rgb(255, 255, 255);"> The requested change will not take effect until it has been approved. </span></font></div><div><span style="white-space: pre-wrap; background-color: rgb(255, 255, 255);"><font face="Verdana, Helvetica, sans-serif" size="2"><br></font></span></div><div style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif" size="2">To view the details of this request, log into OCLQS. &nbsp;(insert OCLQS log in link) Select the “ Licensing Amendment“ tab under My programs screen and then the Amendment Activities tab.</font></div><div style="color: rgb(0, 0, 0);"><font face="Verdana, Helvetica, sans-serif" size="2"><br></font></div><div style="color: rgb(0, 0, 0);"><div><font face="Verdana, Helvetica, sans-serif" size="2">Contact the Child Care Help Desk for additional assistance at 1-877-302-2347.</font></div><div><font face="Verdana, Helvetica, sans-serif" size="2"><br></font></div><div><font face="Verdana, Helvetica, sans-serif" size="2">The Ohio Child Licensing and Quality System Team.</font></div><div><font face="Verdana, Helvetica, sans-serif" size="2"><br></font></div><div><font face="Verdana, Helvetica, sans-serif" size="2">This e-mail message, including any attachments, is for the sole use of the intended recipient(s) and may contain private, confidential, and/or privileged information. Any unauthorized review, use, disclosure, or distribution is prohibited.</font></div></div>]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[<br>]]></td>
+</tr>
+</table>

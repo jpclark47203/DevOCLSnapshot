@@ -1,0 +1,13 @@
+<apex:page showHeader="true" sidebar="true" standardController="CLQ_Program_Transaction__c" extensions="CLQ_CreateTransactionInspectionExtn" action="{!onLoad}">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages >
+            </apex:pageMessages>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!onOK}" value="Ok"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+	
+</apex:page>

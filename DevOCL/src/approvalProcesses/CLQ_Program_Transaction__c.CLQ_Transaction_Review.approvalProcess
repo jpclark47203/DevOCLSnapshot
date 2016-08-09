@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>RecordType</field>
+        <field>CLQ_Program__c</field>
+        <field>CLQ_Transaction_Assigned_To__c</field>
+        <field>CLQ_Submission_Date__c</field>
+        <field>CLQ_Submitter__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <type>userHierarchyField</type>
+            </approver>
+        </assignedApprover>
+        <label>Step 1</label>
+        <name>Step_1</name>
+    </approvalStep>
+    <description>&quot;This process will allow a licensor to send a transaction (mostly New license,change of location,change of Admin,Change of Capacity) to his/her manager for review and approval. 
+In some case, this step is mandatory before issuing the license: 
+- All new license
+- Change of Location
+- Change of Admin
+- Change of Capacity</description>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>CLQ_Program_Transaction__c.CLQ_Transaction_Status__c</field>
+            <operation>equals</operation>
+            <value>Review In Progress</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CLQ_Program_Transaction__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Application - ODE Program,Amendment - ODE - Change of Location</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CLQ_Program_Transaction__c.CLQ_Recommendation__c</field>
+            <operation>equals</operation>
+            <value>Approved,Denied</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CLQ_Program_Transaction__c.CLQ_Start_Approval__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>CLQ_Set_Approved_by_Manager_to_True</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>CLQ_Transaction_Approved</name>
+            <type>Task</type>
+        </action>
+        <action>
+            <name>CLQ_UnFlag_Rejected_By_Manager</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>CLQ_Change_Status_To_Review_In_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>CLQ_Flag_Rejected_By_Manager</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>CLQ_Transaction_Rejected</name>
+            <type>Task</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Change_Transaction_Status</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>CLQ_Reset_Approved_by_Manager_Flag</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>CLQ_UnFlag_Rejected_By_Manager</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Transaction Review ODE</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recallActions>
+        <action>
+            <name>CLQ_Change_Status_To_Review_In_Progress</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>CLQ_Set_Approved_by_Manager_to_True</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>CLQ_UnFlag_Rejected_By_Manager</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

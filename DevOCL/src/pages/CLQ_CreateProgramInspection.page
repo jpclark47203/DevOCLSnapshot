@@ -1,0 +1,3 @@
+<apex:page showHeader="true" sidebar="true" standardController="CLQ_Program__c" extensions="CLQ_CreateProgramInspectionExtn" action="{!onLoad}">
+	
+</apex:page>

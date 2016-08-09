@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>JFS -Send &quot;Application Update Submitted&quot; notification to Assigned specialist</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>CLQ_Letterhead</letterhead>
+    <name>ODJFS Application Update Submitted</name>
+    <style>formalLetter</style>
+    <subject>Application for Licensure Update Submitted for {!CLQ_Program_Transaction__c.CLQ_Program_Name__c}, {!CLQ_Program_Transaction__c.CLQ_OOS_Program_Number__c}</subject>
+    <textOnly>You have successfully submitted an update to your application for licensure for {!CLQ_Program_Transaction__c.CLQ_Program_Name__c}, {!CLQ_Program_Transaction__c.CLQ_OOS_Program_Number__c}. A copy of the updated application is attached to this email.
+
+Contact the Child Care Help Desk for additional assistance at 1-877-302-2347.
+
+The Ohio Child Licensing and Quality System Team.
+
+This e-mail message, including any attachments, is for the sole use of the intended recipient(s) and may contain private, confidential, and/or privileged information. Any unauthorized review, use, disclosure, or distribution is prohibited</textOnly>
+    <type>html</type>
+</EmailTemplate>

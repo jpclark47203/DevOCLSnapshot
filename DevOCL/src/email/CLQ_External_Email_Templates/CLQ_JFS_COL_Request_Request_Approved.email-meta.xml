@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>An email is sent to the program notifying that their amendment has been Approved</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>CLQ_Letterhead</letterhead>
+    <name>JFS COL Request Approved</name>
+    <style>formalLetter</style>
+    <subject>Change of Location Request Approved for {!CLQ_Program_Transaction__c.CLQ_Program_Name__c}, {!CLQ_Program_Transaction__c.CLQ_OOS_Program_Number__c}</subject>
+    <textOnly>The Change of Location Request for {!CLQ_Program_Transaction__c.CLQ_Program_Name__c}, {!CLQ_Program_Transaction__c.CLQ_OOS_Program_Number__c} was approved on {!CLQ_Program_Transaction__c.CLQ_Approval_Date__c} .
+The approved first day of operation at the new location is {!CLQ_Program_Transaction__c.CLQ_Approved_First_Day_at_New_Address__c}.
+
+{!CLQ_Program_Transaction__c.CLQ_Program_Name__c}, {!CLQ_Program_Transaction__c.CLQ_OOS_Program_Number__c} may no longer operate at the original location on or after  the approved first day of operation at the new location.  To view the details of this request, log on to OCLQS.  Select the Licensing Amendment tab under My programs screen. and then the “Amendment   Activities” sub tab. Contact the Child Care Help Desk for additional assistance at 1-877-302-2347.
+
+The Ohio Child Licensing and Quality System Team.
+
+This e-mail message, including any attachments, is for the sole use of the intended recipient(s) and may contain private, confidential, and/or privileged information. Any unauthorized review, use, disclosure, or distribution is prohibited.</textOnly>
+    <type>html</type>
+</EmailTemplate>

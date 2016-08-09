@@ -1,0 +1,71 @@
+<!--
+/************************************************************************
+* Name   : RulesInfo_Conditions                                         *
+* Author : Sujila R Nair                                                *
+* Desc   : Information Component for configuring Conditions             *
+* ----------------------------------------------------------------------*
+* Developer     |  Date        |  Description                           *
+* ----------------------------------------------------------------------*
+* Sujila R Nair |  03/17/2016  |  Original Version                      *
+*************************************************************************/
+-->
+<apex:component >
+    <table class="table table-striped table-bordered">
+        <caption><b>&nbsp;&nbsp;Defining Conditions</b></caption>
+        <tr>
+            <td>ISCHANGED</td>
+            <td>Condition will pass if field is changed</td>
+        </tr>
+        <tr>
+            <td>ISCHANGED{FROMVALUE:TOVALUE}</td>
+            <td>Condition will pass if field is changed to a specific value from a specific value</td>
+        </tr>
+        <tr>
+            <td>NOTCHANGED</td>
+            <td>Condition will pass if field is not changed</td>
+        </tr>
+        <tr>
+            <td>CONTAINS(VALUE) or CONTAINS(VALUE1;VALUE2;VALUE3)</td>
+            <td>Condition will pass if field contains a single value or multiple values</td>
+        </tr>   
+        <tr>
+            <td>== VALUE or != VALUE or > VALUE (any valid Apex operator) </td>
+            <td>Value will be checked against the Condition Field as specified by the operator</td>
+        </tr>
+        <tr>
+            <td>STRING Fields</td>
+            <td>Value should be specified in quotes 
+                eg: status__c != 'Success' (Single Quote between 'SomeValue' is not allowed) 
+            </td>
+        </tr>
+        <tr>
+            <td>DATE Fields</td>
+            <td>Format example: 
+                >= Date.valueOf('2014-04-30') </td>
+        </tr>
+        <tr>
+            <td>DATETIME Fields</td>
+            <td>Format example: 
+                >= DateTime.parse('04/30/2016 11:59 PM') 
+            </td>
+        </tr>
+        <tr>
+            <td>EMAIL Fields</td>
+            <td>Format example: 
+                == 'test@sfdc.com' 
+            </td>
+        </tr>
+        <tr>
+            <td>PHONE Fields</td>
+            <td>Format example: 
+                == '1234567890' 
+            </td>
+        </tr>
+        <tr>
+            <td>REFERENCE Fields</td>
+            <td> Single Parent Field: Select Field from dropdown
+                Multiple Parent Fields: Select checkbox to give field manually eg: event_template__r.event_type__r.Name
+            </td>
+        </tr>
+    </table>
+</apex:component>

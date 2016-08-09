@@ -1,0 +1,53 @@
+<apex:page standardController="CLQ_Inspection__c" extensions="CLQ_InspectionToolSelectionExtn" showHeader="true" sidebar="false" action="{!onload}">
+
+
+<script>
+                   function checkboxuse(tag) {
+                        var menus  = document.getElementsByClassName("Teststyle");
+                        if (tag.checked == true) {
+                             for (var i = menus.length - 1; i >= 0; i--)
+                             {
+                                    menus[i].checked = false;
+                             }
+                            tag.disabled = false;
+                            tag.checked = true;
+                        }
+                       else {
+                             for (var i = menus.length - 1; i >= 0; i--)
+                             {
+                                     menus[i].disabled = false;
+                             }
+                         }
+                     }     
+              </script>
+	<apex:form id="clqInspectionToolform">
+		
+
+		<apex:pageBlock id="theblock" title="Available Tool">
+			<apex:pageMessages id="message"></apex:pageMessages>
+			<apex:pageBlockButtons >
+				<apex:commandButton value="Save" action="{!onSave}" rerender="theblock,tooltable"/>
+				<apex:commandButton value="Return" action="{!onReturn}" rerender="message,tooltable"/>
+			</apex:pageBlockButtons>
+			<apex:pageBlockTable value="{!innerInspectionToolList}" var="iT" id="tooltable" >
+				<apex:column headerValue="Selected">
+					<apex:inputCheckbox value="{!iT.isSelected}" styleClass="Teststyle" id="primaryCheckBox" onchange="return checkboxuse(this)"/>
+				</apex:column>
+				<apex:column headerValue="Recommended" >
+					<apex:inputCheckbox value="{!iT.isRecommended}" disabled="true"/>
+				</apex:column>
+				<apex:column headerValue="Name">
+					<apex:outputField value="{!iT.inspectionToolrecord.Name}"/>
+				</apex:column>
+				<apex:column headerValue="Description">
+					<apex:outputField value="{!iT.inspectionToolrecord.CLQ_Description__c}"/>
+				</apex:column>
+				
+			</apex:pageBlockTable>
+			
+			<apex:pageBlockSection showHeader="true" columns="1">
+				<apex:inputField value="{!inspectionRecord.CLQ_Reason_for_Inspection_Tool_Selection__c}" label="Reason for not selection recommended tool"/>
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+	</apex:form>    
+</apex:page>

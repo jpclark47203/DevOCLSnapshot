@@ -1,0 +1,171 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" standardStylesheets="false" standardController="CLQ_Inspection__c" extensions="CLQ_VisitModeController" action="{!onLoad}">
+<style type="text/css">
+.center {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+        } 	
+</style>        
+<apex:form >
+	<head>
+		
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+	</head>
+	<body>
+		<apex:outputPanel id="informationPanel">
+		<apex:outputPanel rendered="{!NOT(showPopup)}">
+		<div class="container">
+			<nav class="navbar navbar-fixed-top">
+				
+			</nav>
+			
+			<h1>Visit Mode</h1>
+			
+			<div class="row">
+				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+					<div class="panel panel-primary">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h4>Search Filter:</h4>
+								
+							</div>
+							<div class="panel-body">
+								<div class="input-group input-group-md">
+									<span class="input-group-addon">Result</span>
+									<apex:selectList value="{!filtervalue}" size="1" multiselect="false" styleClass="form-control">
+		                            <apex:selectOptions value="{!filterOptions}"/>
+		                        </apex:selectList>	
+								</div>
+								<div class="input-group input-group-md">
+									<span class="input-group-addon">Domain</span>
+									<apex:selectList value="{!domainfiltervalue}" size="1" multiselect="false" styleClass="form-control">
+		                        	<apex:selectOptions value="{!domainOptions}"/>
+								
+		                        </apex:selectList>	
+								</div>
+								<div></div>
+								<apex:commandButton action="{!onSearch}" value="Search"  reRender="therulePanel" styleclass="btn btn-primary btn-block"/>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<apex:outputPanel id="therulePanel">
+				<div class="center">
+				
+					
+					<div class="btn-group" role="group">
+						<apex:commandButton action="{!onSave}" value="Save"  status="counterStatus"  styleClass="btn btn-info" />
+	                    <apex:commandButton action="{!onSaveandClose}" value="Save & Close"  status="counterStatus" styleClass="btn btn-info"/>
+	                    <apex:commandButton action="{!onCancel}" value="Cancel"  status="counterStatus"  styleClass="btn btn-info"/>
+	                    <!--<apex:commandButton action="{!onCancel}" value="Close Visit Mode"  status="counterStatus" styleClass="btn btn-info"/>-->
+	                    <apex:commandButton action="{!markAllCompliant}" value="Mark Compliant"  reRender="therulePanel" styleClass="btn btn-info"/>
+					
+					</div>
+				
+				</div>
+				
+				<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+					<!--<div class="panel-group" >-->
+						<div class="panel panel-info" id="accordion">
+							<apex:repeat value="{!domainRuleWrapperList}" var="domainGroup" id="theRepeat">
+								<apex:outputText id="showdomainCheck" rendered="{!domainGroup.showDomain}" >
+								<div href="#{!domainGroup.domainName}" class="panel-heading" data-toggle="collapse" data-parent="#accordion">
+									<h4 class="panel-title">
+										<!--<a href="{!domainGroup.domainName}">-->
+										{!domainGroup.domainName}
+										<!--</a>-->
+									</h4>
+								</div>
+								<div id="{!domainGroup.domainName}" class="panel-collapse collapse in" >
+									<div >
+										<apex:repeat value="{!domainGroup.rulelist}" var="rule">
+											<apex:outputText id="showRulecheck" rendered="{!rule.showRule}">
+											<div class="Card card-inverse card-info">
+
+												<div class="card-block">
+													<h4 class="card-title">
+														{!rule.ruleRecord.CLQ_Domain_Rule__r.CLQ_Rule__r.CLQ_Short_Name__c}
+													</h4>
+													<p class="card-text">
+														{!rule.ruleRecord.CLQ_Domain_Rule__r.CLQ_Rule__r.CLQ_Description__c}
+													</p>
+													<ul class="list-group list-group-flush">
+														<li class="list-group-item">Regulation :
+														{!rule.regulation}</li>
+														<li class="list-group-item">Findings:<apex:outputText value="{!rule.sfindingCode}" escape="false" /></li>
+														<li class="list-group-item"> Result :
+															<apex:inputField value="{!rule.ruleRecord.CLQ_Result__c}">
+															</apex:inputField>
+														</li>
+													</ul>
+													<apex:commandButton styleclass="btn btn-primary" action="{!popupOnLoad}" rerender="informationPanel,popup"  status="counterStatus" value="Edit Findings">
+                                                        <apex:param assignTo="{!selectedInspectedRule}" value="{!rule.ruleRecord.id}" name="selectedInspectedRule"/>
+                                                        <apex:param assignTo="{!selectedRule}" value="{!rule.ruleRecord.CLQ_Domain_Rule__c}" name="selectedRule"/>
+                                                        <apex:param assignTo="{!resultselected}" value="{!rule.ruleRecord.CLQ_Result__c}" name="resultselected"/>
+                                                        
+                                                    </apex:commandButton>
+												</div>
+											</div>
+											</apex:outputText>
+										</apex:repeat>
+									</div>
+								</div>	
+								</apex:outputText>		
+							</apex:repeat>
+						</div>
+					<!--</div>-->	
+				</div>
+
+				</apex:outputPanel>
+			</div>
+			
+		</div>
+		</apex:outputPanel>
+		</apex:outputPanel>
+		<apex:outputPanel id="popup" >
+			<apex:outputPanel id="popInnerOutputPnl" styleClass="customPopup" rendered="{!showPopup}">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+							</div>
+							<div class="panel-body">
+								<div class="center">
+									<div class="btn-group" role="group">
+										<apex:commandButton value="Save" title="Save" action="{!savePopUp}" styleclass="btn btn-primary" rerender="informationPanel,popup" style="float: inherit;"/>
+                                        <apex:commandButton value="Close" title="Close" action="{!closePopUp}" rerender="informationPanel,popup" styleclass="btn btn-default" style="float: inherit;"/>
+									</div>
+								</div>
+								<apex:outputPanel id="tablepanel">
+									<apex:repeat value="{!popupWrapperList}" var="rulefinding">
+										<div class="Card card-outline-primary">
+											<h4 class="card-title">
+												<apex:inputCheckbox value="{!rulefinding.isSelected}"/>
+												<apex:outputField value="{!rulefinding.finding.CLQ_Standard_Finding__c}" />
+											</h4>
+											<p class="card-text">
+														<apex:inputField value="{!rulefinding.finding.CLQ_Description__c}" />
+													</p>
+											<ul class="list-group list-group-flush">
+												<li class="list-group-item"> Risk Level :
+													{!rulefinding.finding.CLQ_Risk_Level__c}
+												</li>
+											</ul>
+										</div>
+									</apex:repeat>	
+									
+								</apex:outputPanel>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</apex:outputPanel>
+		</apex:outputPanel>
+	</body>
+	</apex:form>
+</apex:page>

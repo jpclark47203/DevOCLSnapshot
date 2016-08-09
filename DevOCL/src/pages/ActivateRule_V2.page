@@ -1,0 +1,117 @@
+<!--
+/************************************************************************
+* Name   : ActivateRule_V2                                              *
+* Author : Sujila R Nair                                                *
+* Desc   : Activate/De-activate compiled Ruleset Version                *
+* ----------------------------------------------------------------------*
+* Developer     |  Date        |  Description                           *
+* ----------------------------------------------------------------------*
+* Sujila R Nair |  04/22/2016  |  Original Version                      *
+*************************************************************************/
+-->
+<apex:page showHeader="false" sidebar="false" Controller="ActivateRuleSetController_V2"  
+           standardStylesheets="false" docType="html-5.0"  action="{!redirectActivatePage}">
+    <c:RulesUtilities />
+    <c:RulesNavbar_V2 />
+    <style>
+    body {padding-top: 70px; }
+    </style>
+    <div class="container-fluid">
+        <apex:form styleClass="form-horizontal" id="rulesetform">
+             <div align="center"><apex:pageMessages escape="false"/></div>
+          <apex:outputPanel id="ContextPanel" >
+                <div class="container-fluid">
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">{!heading} Ruleset </font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right"></div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Ruleset  Name -->
+                        <div class="row top-buffer "  style="margin-top:10px ">
+                            <div class="col-sm-2 ">
+                                <label for="RuleSetName"  class="col-sm-12 control-label">RuleSet Name</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.RuleSet_Name__c}" styleClass="form-control" />
+                            </div>
+                        </div>
+                        <!-- Effective Start date -->
+                        <div class="row top-buffer"  style="margin-top:10px">
+                            <div class="col-sm-2">
+                                <label for="Startdate"  class="col-sm-12 control-label">Effective Start Date</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!ruleset.Effective_Start_Date__c}" styleClass="form-control" type="date" showDatePicker="false"  />
+                            </div>
+                        </div>    
+                        <!-- Effective End date -->
+                        <div class="row top-buffer"  style="margin-top:10px ">
+                            <div class="col-sm-2">
+                                <label for="Enddate"  class="col-sm-12 control-label">Effective End Date</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!ruleset.Effective_End_Date__c}" styleClass="form-control" type="date" showDatePicker="false"  />
+                            </div>
+                        </div>
+                        <!-- RuleSet Version -->
+                        <div class="row top-buffer"  style="margin-top:10px ">
+                            <div class="col-sm-2">
+                                <label for="execution"  class="col-sm-12 control-label">Version</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!ruleset.Version__c}" styleClass="form-control" />
+                            </div>
+                        </div>
+                        <!-- Ruleset Status -->
+                        <div class="row top-buffer"  style="margin-top:10px ">
+                            <div class="col-sm-2">
+                                <label for="execution"  class="col-sm-12 control-label">Status</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!ruleset.Status__c}" styleClass="form-control" />
+                            </div>
+                        </div>
+                        <!-- Ruleset Status -->
+                        <div class="row top-buffer"  style="margin-top:10px ">
+                            <div class="col-sm-2">
+                                <label for="execution"  class="col-sm-12 control-label">Active Class</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!ruleset.Class_Name__c}" styleClass="form-control" />
+                            </div>
+                        </div>
+                        <!-- Ruleset Status -->
+                        <div class="row top-buffer"  style="margin-top:10px ">
+                            <div class="col-sm-2">
+                                <label for="execution"  class="col-sm-12 control-label">Activate Rule?</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!ruleset.Active__c}" />
+                            </div>
+                        </div>                        
+                        <nav class="navbar navbar-default1 navbar-fixed-bottom">
+                            <div class="container" style="text-align:center;"> 
+                                <div class="btn-group btn-group-md">
+                                    <br/>
+                                    <apex:commandlink styleClass="btn btn-home" action="{!navigateToHome}" title="Cancel & Return to Ruleset Home">
+                                        <span class="glyphicon glyphicon-home" />
+                                    </apex:commandlink>
+                                    <apex:commandLink styleClass="btn btn-success" action="{!activateRuleSet}" reRender="ContextPanel" rendered="{!IF(ruleset.Status__c == 'Compiled' && ruleset.Active__c != true, true, false)}" title="Activate Ruleset">
+                                        Activate
+                                    </apex:commandLink>
+                                    <apex:commandLink styleClass="btn btn-danger" action="{!activateRuleSet}" reRender="ContextPanel" rendered="{!IF(ruleset.Active__c == true, true, false)}" title="De-Activate Ruleset">
+                                        De-Activate
+                                    </apex:commandLink>
+                                </div>
+                            </div> 
+                            <br/>
+                        </nav>
+                    </div>
+                </div>
+            </apex:outputPanel>
+           
+        </apex:form>
+    </div>
+</apex:page>

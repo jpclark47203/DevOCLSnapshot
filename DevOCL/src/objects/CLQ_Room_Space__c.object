@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This is to document room/space information about a program.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Age_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>Age Group</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Infant</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Age_Rangr__c</fullName>
+        <externalId>false</externalId>
+        <label>Age Range</label>
+        <picklist>
+            <picklistValues>
+                <fullName>0 - 12 months</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Additional_Width_Feet__c</fullName>
+        <externalId>false</externalId>
+        <label>Additional Width Feet</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Age_Group__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Will children in this room be over or under 2 1/2 years old?</inlineHelpText>
+        <label>Age Group</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Over 2 1/2 Only</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Under 2 1/2 Only</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Both (Over &amp; Under 2 1/2)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Approved_Room_Space__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Approved</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Approved_for_under_2_1_2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Approved for under 2 1/2</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Building_Limitation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Building Limitation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Calc_Nb_of_Child_Allowed_Indoor__c</fullName>
+        <externalId>false</externalId>
+        <formula>ABS( CLQ_Square_Footage__c / 35)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated Total Number of Children</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Calc_Nb_of_Children_Allowed_Outdoor__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Square_Footage__c / 60</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated Total Number of Children</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_County__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_County__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>County</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Currently_In_Use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>In Use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>This field is used an External ID for Room Space object.</description>
+        <externalId>true</externalId>
+        <label>External_Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Inspection</label>
+        <referenceTo>CLQ_Inspection__c</referenceTo>
+        <relationshipName>Rooms_Spaces</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Length2_Feet__c</fullName>
+        <externalId>false</externalId>
+        <label>Length2 Feet</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Length2_Inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Length2 Inches</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Length_Additional_Feet__c</fullName>
+        <externalId>false</externalId>
+        <label>Length Additional Feet</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Length_Additional_Inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Length Additional Inches</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Length_Feet__c</fullName>
+        <externalId>false</externalId>
+        <label>Length1 Feet</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Length_Inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Length1 Inches</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Number_of_Children_Allowed__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Children Allowed</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Number_of_Children_Over_2_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Children Over 2 1/2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Number_of_Children_Under_2_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Children Under 2 1/2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Number_of_Children_Under_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Children Under 2</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Program_Transaction__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Program Transaction</label>
+        <referenceTo>CLQ_Program_Transaction__c</referenceTo>
+        <relationshipName>Rooms_Spaces</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Program__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Program</label>
+        <referenceTo>CLQ_Program__c</referenceTo>
+        <relationshipName>Rooms_Spaces</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Review_Comment__c</fullName>
+        <externalId>false</externalId>
+        <label>Review Comment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_RoomSpace_Location__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Location within the building. Eg: Floor</inlineHelpText>
+        <label>Room/Space Location</label>
+        <length>250</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Room_Space_Location__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Location within the building. Eg: Floor Number</inlineHelpText>
+        <label>Room/Space Location</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Basement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>First Floor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Second Floor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Room_Space_Number__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Room/Space number as used by the program.</inlineHelpText>
+        <label>Room/Space Number</label>
+        <length>128</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Room_Space_Shape__c</fullName>
+        <externalId>false</externalId>
+        <label>Room/Space Shape</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Square</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rectangle</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>L-Shaped</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Irregular</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Room_Space_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Room/Space Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Primary Space</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Additional Space</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Square_Footage_Irregular__c</fullName>
+        <externalId>false</externalId>
+        <label>Square Footage Irregular</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Square_Footage__c</fullName>
+        <externalId>false</externalId>
+        <formula>((CLQ_Width_Feet__c * 12 +  CLQ_Width_Inches__c ) * ( CLQ_Length_Feet__c * 12 +  CLQ_Length_Inches__c ))/144</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Square Footage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_State__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( CLQ_Program__r.CLQ_State__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>State</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Street_Address_1__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_Street_Address_1__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Street Address 1</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Street_Address_2__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_Street_Address_2__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Street Address 2</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Used_By_Under_or_Over_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Used by Under or Over 2</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Used_by_Under_or_Over_2_1_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Used by Under or Over 2 1/2</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Width2_Feet__c</fullName>
+        <externalId>false</externalId>
+        <label>Width2 Feet</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Width2_Inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Width2 Inches</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Width_Additional_Inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Width Additional Inches</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Width_Feet__c</fullName>
+        <externalId>false</externalId>
+        <label>Width1 Feet</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Width_Inches__c</fullName>
+        <externalId>false</externalId>
+        <label>Width1 Inches</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Zipcode__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_Zip_Code__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Zipcode</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>External Notes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Group_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Group Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Group_Notes__c</fullName>
+        <description>This will be used to capture notes against the age group</description>
+        <externalId>false</externalId>
+        <label>File Notes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Internal_Notes__c</fullName>
+        <description>This field is to capture Internal Notes</description>
+        <externalId>false</externalId>
+        <label>Internal Notes</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Number_of_Children_Allowed__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of Children Allowed</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Onsite_status__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Inspection__r.Inspection_Complete__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Onsite status</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Room/Space Information</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Room/Group Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Rooms/Spaces</pluralLabel>
+    <recordTypes>
+        <fullName>CLQ_Indoor_Room_Space</fullName>
+        <active>true</active>
+        <label>Indoor Room/Space</label>
+        <picklistValues>
+            <picklist>Age_Group__c</picklist>
+            <values>
+                <fullName>Infant</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Age_Rangr__c</picklist>
+            <values>
+                <fullName>0 - 12 months</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Age_Group__c</picklist>
+            <values>
+                <fullName>Both %28Over %26 Under 2 1%2F2%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over 2 1%2F2 Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under 2 1%2F2 Only</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Location__c</picklist>
+            <values>
+                <fullName>Basement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>First Floor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Second Floor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Shape__c</picklist>
+            <values>
+                <fullName>Irregular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L-Shaped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rectangle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Square</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Type__c</picklist>
+            <values>
+                <fullName>Additional Space</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Space</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Used_By_Under_or_Over_2__c</picklist>
+            <values>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Used_by_Under_or_Over_2_1_2__c</picklist>
+            <values>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CLQ_Outdoor_Space</fullName>
+        <active>true</active>
+        <label>Outdoor Space</label>
+        <picklistValues>
+            <picklist>Age_Group__c</picklist>
+            <values>
+                <fullName>Infant</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Age_Rangr__c</picklist>
+            <values>
+                <fullName>0 - 12 months</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Age_Group__c</picklist>
+            <values>
+                <fullName>Both %28Over %26 Under 2 1%2F2%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over 2 1%2F2 Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under 2 1%2F2 Only</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Location__c</picklist>
+            <values>
+                <fullName>Basement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>First Floor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Second Floor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Shape__c</picklist>
+            <values>
+                <fullName>Irregular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L-Shaped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rectangle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Square</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Type__c</picklist>
+            <values>
+                <fullName>Additional Space</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Space</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Used_By_Under_or_Over_2__c</picklist>
+            <values>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Used_by_Under_or_Over_2_1_2__c</picklist>
+            <values>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Group</fullName>
+        <active>true</active>
+        <label>Group</label>
+        <picklistValues>
+            <picklist>Age_Group__c</picklist>
+            <values>
+                <fullName>Infant</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Age_Rangr__c</picklist>
+            <values>
+                <fullName>0 - 12 months</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Age_Group__c</picklist>
+            <values>
+                <fullName>Both %28Over %26 Under 2 1%2F2%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over 2 1%2F2 Only</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under 2 1%2F2 Only</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Location__c</picklist>
+            <values>
+                <fullName>Basement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>First Floor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Second Floor</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Shape__c</picklist>
+            <values>
+                <fullName>Irregular</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>L-Shaped</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rectangle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Square</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Room_Space_Type__c</picklist>
+            <values>
+                <fullName>Additional Space</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Primary Space</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Used_By_Under_or_Over_2__c</picklist>
+            <values>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Used_by_Under_or_Over_2_1_2__c</picklist>
+            <values>
+                <fullName>Both</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Over</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>CLQ_FCC_Type_Cant_fill_Under_2_and_half</fullName>
+        <active>true</active>
+        <description>If the program record type is FCC under 2 1/2 should not be filled in.</description>
+        <errorConditionFormula>AND(CONTAINS(CLQ_Program__r.RecordType.Name,&apos;FCC&apos;),
+OR(NOT(ISBLANK(CLQ_Number_of_Children_Under_2_5__c)), NOT(ISBLANK(TEXT(CLQ_Used_by_Under_or_Over_2_1_2__c)))))</errorConditionFormula>
+        <errorMessage>Under 2 1/2 information cannot be filled in for FCC type records.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CLQ_FCC_Type_Should_Fill_Under_2_Info</fullName>
+        <active>true</active>
+        <description>For the FCC Recordtype records Under 2 years information is required.</description>
+        <errorConditionFormula>AND(CONTAINS(CLQ_Program__r.RecordType.Name,&apos;FCC&apos;),OR(ISBLANK(TEXT(CLQ_Used_By_Under_or_Over_2__c)),ISBLANK(CLQ_Number_of_Children_Under_2__c)))</errorConditionFormula>
+        <errorMessage>No. of children Under 2 years and If used by over and Under are required for FCC Type.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CLQ_ODE_Type_Cant_fill_in_Under_2_Info</fullName>
+        <active>true</active>
+        <description>If the Program record type is ODE and Center Under 2 Information should not be filled in.</description>
+        <errorConditionFormula>AND(OR(CONTAINS(CLQ_Program__r.RecordType.Name,&apos;Child Care&apos;),CLQ_Program__r.RecordType.Name = &apos;Pre School&apos;),
+OR(NOT(ISBLANK(TEXT(CLQ_Used_By_Under_or_Over_2__c))),NOT(ISBLANK(CLQ_Number_of_Children_Under_2__c))))</errorConditionFormula>
+        <errorMessage>Under 2 information cannot be filled in for ODE or Center type records.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CLQ_ODE_Type_Should_Fill_Under_2_an_half</fullName>
+        <active>true</active>
+        <description>For the ODE and Center Recordtypes Under 2 years information is required.</description>
+        <errorConditionFormula>AND(OR(CONTAINS(CLQ_Program__r.RecordType.Name,&apos;Child Care&apos;),CLQ_Program__r.RecordType.Name = &apos;Pre School&apos;),OR(ISBLANK(CLQ_Number_of_Children_Under_2_5__c),ISBLANK(TEXT(CLQ_Used_by_Under_or_Over_2_1_2__c))))</errorConditionFormula>
+        <errorMessage>No. of children Under 2 1/2 years and If used by over and Under are required for ODE &amp; Center Types.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CLQ_Square_Footage_Irregular_Required</fullName>
+        <active>true</active>
+        <description>If Room/Space Shape - Irregular is selected in the picklist, then the &quot;Square Footage Irregular&quot; field should be required.</description>
+        <errorConditionFormula>AND(ISPICKVAL(CLQ_Room_Space_Shape__c,&apos;Irregular&apos;), ISNULL(CLQ_Square_Footage_Irregular__c))</errorConditionFormula>
+        <errorMessage>Square Footage Irregular is Required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Room_lock</fullName>
+        <active>false</active>
+        <errorConditionFormula>CLQ_Inspection__r.Inspection_Complete__c</errorConditionFormula>
+        <errorMessage>Inspection complete</errorMessage>
+    </validationRules>
+</CustomObject>

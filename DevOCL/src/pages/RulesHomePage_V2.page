@@ -1,0 +1,207 @@
+<!--
+/************************************************************************
+* Name   : RulesHomePage_V2                                             *
+* Author : Sujila R Nair                                                *
+* Desc   : Mater Catalog and child Ruleset versions                     *
+* ----------------------------------------------------------------------*
+* Developer     |  Date        |  Description                           *
+* ----------------------------------------------------------------------*
+* Sujila R Nair |  04/22/2016  |  Original Version                      *
+*************************************************************************/
+-->
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" Controller="RuleSetHomeController_V2" docType="html-5.0" action="{!redirectCatalog}">
+    <c:RulesUtilities />
+    <c:RulesNavbar_V2 />
+    <apex:includeScript value="{!URLFOR($Resource.BDataTableJS)}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.BDataTableCss)}"/>   
+    <style>
+    body {padding-top: 70px; }
+    
+    </style>
+    <script>
+    $(document).ready(function(){
+        $('[id$="myTable"]').DataTable();        
+    });
+    function filterColumn (i) {  
+        $('[id$="myTable"]').DataTable().columns(6).search(i.value,true,false).draw();
+    }
+    </script>
+    <style>
+        .changecss
+        {
+        background-color:#00ff00;
+        }
+        
+        tr:nth-child(even){background-color: #e6faff}
+        table.customeStyleTable tr.odd { background-color: white; }
+        table.customeStyleTable tr.even { background-color: #d6edf5; } 
+        table.customeStyleTable th{ background-color: #F2F2F2; } 
+        
+        .btn:focus, .btn:active:focus, .btn.active:focus {
+        outline: 0 none;
+        }
+        
+        .btn-primary {
+        background: #0099cc;
+        color: #ffffff;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+        background: #33a6cc;
+        }
+        
+        .btn-primary:active, .btn-primary.active {
+        background: #007299;
+        box-shadow: none;
+        }
+        }
+    </style>
+    
+    <div class="container-fluid" style="overflow-x:hidden;">
+        <apex:form styleClass="form-horizontal" >
+            <div align="center"><apex:pageMessages escape="false"/></div>
+            <div class="form-group">
+                <apex:outputPanel id="ContextPanel">
+                    <!--<b><h4> &nbsp;&nbsp; <font color="#053f9d">Context Information</font></h4></b>-->
+                    <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                        <div class="col-sm-10" >
+                            <b><h4> <font color="#053f9d">&nbsp;&nbsp;Ruleset Home</font></h4></b>
+                        </div>
+                        <div class="col-sm-2" align="right">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Catalog  Name -->
+                        <div class="row top-buffer "  style="margin-top:10px ">
+                            <div class="col-sm-2">
+                                <label for="CatalogName"  class="col-sm-12 control-label">Ruleset Catalog Name</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:outputText value="{!Catalog.Name__c}" styleClass="form-control" />
+                            </div>
+                            <div>
+                                <a style="cursor:pointer;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil"> </span></a>
+                            </div> 
+                        </div>
+                        <!-- Effective Start date -->
+                        <div class="row top-buffer"  style="margin-top:10px">
+                            <div class="col-sm-2">
+                                <label for="Startdate"  class="col-sm-12 control-label">Effective Start Date</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!Catalog.Effective_Start_Date__c}" styleClass="form-control" type="date" showDatePicker="false" />
+                            </div>
+                        </div>    
+                        <!-- Effective End date -->
+                        <div class="row top-buffer"  style="margin-top:10px ">
+                            <div class="col-sm-2">
+                                <label for="Enddate"  class="col-sm-12 control-label">Effective End Date</label>
+                            </div>
+                            <div class="col-sm-4">
+                                <apex:inputField value="{!Catalog.Effective_End_Date__c}" styleClass="form-control" type="date" showDatePicker="false" />
+                            </div>
+                        </div>  
+                    </div>
+                </apex:outputPanel>
+                
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Edit Catalog Name </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Catalog Name</label>
+                                    <apex:inputField value="{!Catalog.Name__c}" styleClass="form-control"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>                                                
+                                <apex:commandButton styleclass="btn btn-primary" value="Save" action="{!updateCatalog}" reRender="ContextPanel" onComplete="$('#myModal').modal('hide');$('body').removeClass('modal-open');$('.modal-backdrop').remove();"/>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+               
+                <apex:outputPanel id="rulesetPanel" >
+                    <apex:outputPanel rendered="{!showRulesetPanel}"> 
+                        <br/>
+                        <div class="row top-buffer"  style="margin-top:10px display: inline" >
+                            <div class="col-sm-10" >
+                                <b><h4> <font color="#053f9d">&nbsp;&nbsp;List of Rulesets</font></h4></b>
+                            </div>
+                            <div class="col-sm-2" align="right">
+                                <apex:outputLink styleClass="btn btn-primary" value="/apex/CreateRuleSet_V2?Catalogid={!Catalog.id}"><span class="glyphicon glyphicon-plus" onclick="waitingDialog.show()"> </span> Create Ruleset </apex:outputLink>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                        <!-- List of Rulesets -->
+                        <br/>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="container-fluid"> 
+                                    <div class="form-group">
+                                        <apex:pageBlock id="RuleSetListBlock"> 
+                                            
+                                            <apex:pageBlockTable id="myTable" value="{!RulesetList}" var="RuleSet" styleClass="customeStyleTable"  >
+                                                <apex:column >                
+                                                    <apex:facet name="header">Version</apex:facet> 
+                                                    <apex:outputText value="{!RuleSet.Version__c}" />
+                                                </apex:column> 
+                                                <apex:column >                
+                                                    <apex:facet name="header">Class Name</apex:facet> 
+                                                    <apex:outputText value="{!RuleSet.Class_Name__c}" />
+                                                </apex:column> 
+                                                <apex:column >                
+                                                    <apex:facet name="header">Status</apex:facet> 
+                                                    <apex:outputText value="{!RuleSet.Status__c}" />
+                                                </apex:column>
+                                                <apex:column >                
+                                                    <apex:facet name="header">Test Class Name</apex:facet> 
+                                                    <apex:outputText value="{!RuleSet.Test_Class_Name__c}" />
+                                                </apex:column> 
+                                                <apex:column >                
+                                                    <apex:facet name="header">Status</apex:facet> 
+                                                    <apex:outputText value="{!RuleSet.Test_Class_Status__c}" />
+                                                </apex:column>
+                                                <apex:column >                
+                                                    <apex:facet name="header">Active?</apex:facet> 
+                                                    <apex:outputField value="{!RuleSet.Active__c}" />
+                                                </apex:column>  
+                                                <!--<apex:column >                 
+                                                    <apex:facet name="header">Last Modified</apex:facet> 
+                                                    <apex:outputField value="{!RuleSet.LastModifiedDate}" />
+                                                </apex:column>  -->
+                                                <apex:column >  
+                                                    <apex:facet name="header">Actions</apex:facet> 
+                                                    <apex:commandlink action="/apex/ViewRuleSet_V2?id={!RuleSet.id}" title="Details"><span class="glyphicon glyphicon-th-list" style="color:#1643AC"></span></apex:commandlink>                                                       
+                                                    &nbsp;&nbsp;
+                                                    <apex:commandlink action="/apex/CreateRuleSet_V2?id={!RuleSet.id}" title="Edit" ><span class="glyphicon glyphicon-edit" style="color:#C66905" ></span></apex:commandlink>
+                                                    &nbsp;&nbsp;
+                                                    <apex:commandlink action="{!cloneRuleSet}" title="Clone" ><span class="glyphicon glyphicon-duplicate" style="color:#267326"></span><font color="#267326"> </font>
+                                                        <apex:param name="rsidToDel" value="{!RuleSet.id}" assignTo="{!rsidToDel}"/>
+                                                    </apex:commandlink>                                                    
+                                                    &nbsp;&nbsp;
+                                                    <apex:commandlink action="{!deleteRuleSet}" title="Delete" onclick="if(!confirm('Are you sure?')) return false;" rendered="{!IF(RuleSet.Active__c != true, true, false)}" ><span class="glyphicon glyphicon-trash" style="color:#A90000"></span>
+                                                        <apex:param name="rsidToDel" value="{!RuleSet.id}" assignTo="{!rsidToDel}"/>
+                                                    </apex:commandlink>
+                                                    <apex:outputLink disabled="true" rendered="{!IF(RuleSet.Active__c == true, true, false)}" title="Active rule can not be deleted"><span class="glyphicon glyphicon-ban-circle" style="color:#A90000"></span></apex:outputLink>
+                                                    &nbsp;&nbsp;
+                                                    <apex:commandlink action="/apex/ActivateRule_V2?id={!RuleSet.id}&Catalogid={!Catalog.Id}" title="Activate or De-Activate" rendered="{!IF(RuleSet.Status__c == 'Compiled', true, false)}" ><span class="glyphicon glyphicon-cog" style="color:#C66905" ></span><font color="#A90000	"> </font></apex:commandlink>
+                                                    <apex:commandlink action="/apex/ActivateRule_V2?id={!RuleSet.id}&Catalogid={!Catalog.Id}" title="Activate or De-Activate" rendered="{!IF(RuleSet.Status__c == 'Active', true, false)}" ><span class="glyphicon glyphicon-cog" style="color:#C66905" ></span><font color="#A90000	"> </font></apex:commandlink>
+                                                    <apex:commandlink action="/apex/ActivateRule_V2?id={!RuleSet.id}&Catalogid={!Catalog.Id}" title="Activate or De-Activate" rendered="{!IF(RuleSet.Status__c == 'Deactivated', true, false)}" ><span class="glyphicon glyphicon-cog" style="color:#C66905" ></span><font color="#A90000	"> </font></apex:commandlink>
+                                                </apex:column>
+                                            </apex:pageBlockTable>
+                                        </apex:pageBlock>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel> 
+                </apex:outputPanel>
+            </div>
+        </apex:form>
+    </div>
+</apex:page>

@@ -1,0 +1,2154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CLQ_Approved_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Approved By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Inspections1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Approved_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Approved Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_CAP_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>CAP Required</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_County__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_County__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>County</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Create_Day_Camp_Audit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Create Day Camp Audit</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Date_Notification_Sent__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Notification Sent</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Date_of_Audit__c</fullName>
+        <externalId>false</externalId>
+        <label>Date of Audit</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Email_Full_Inspection_Report__c</fullName>
+        <description>Check if the full inspection report has been emailed to the provider</description>
+        <externalId>false</externalId>
+        <label>Email Full-Inspection Report</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Email_Summay_Report__c</fullName>
+        <externalId>false</externalId>
+        <label>Email Summay Report</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>This field is used an External ID for Inspection object.</description>
+        <externalId>true</externalId>
+        <label>External_Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_File_Note__c</fullName>
+        <externalId>false</externalId>
+        <label>File Note</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CLQ_Follow_Up_Inspection_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow Up Inspection Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Begin_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Begin Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_End_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection End Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Notice__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Notice</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Inspection Owner</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>InspectionOwner</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Record_Id__c</fullName>
+        <externalId>false</externalId>
+        <formula>Id</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Inspection Record Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Requirements__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter specific information regarding accessibility or availability of inspection visit related items or people</inlineHelpText>
+        <label>Inspection Requirements</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Start_Date__c</fullName>
+        <defaultValue>TODAY()</defaultValue>
+        <externalId>false</externalId>
+        <label>Inspection Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pending Processing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Under Supervisor / Approver Review</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Returned to Specialist</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Revised</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Deleted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Tool__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Inspection Tool</label>
+        <referenceTo>CLQ_Inspection_Tools__c</referenceTo>
+        <relationshipLabel>Inspections</relationshipLabel>
+        <relationshipName>Inspections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pre-license</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Provisional</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Follow-up</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Monitor</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Incident/Injury</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Amendment - change of location</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Amendment - change of capacity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Is_Follow_Up_Inspection_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Is Follow Up Inspection Required</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Method__c</fullName>
+        <externalId>false</externalId>
+        <label>Method</label>
+        <picklist>
+            <picklistValues>
+                <fullName>On-site Inspection</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Telephone Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Notice__c</fullName>
+        <externalId>false</externalId>
+        <label>Notice</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Unannounced</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Announced</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Notification_Due_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Date_Notification_Sent__c +30</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Notification Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_On_Site_Representative_Present__c</fullName>
+        <externalId>false</externalId>
+        <label>On-Site Representative Present</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_On_Site_Representative__c</fullName>
+        <externalId>false</externalId>
+        <label>On- Site Representative</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Original_Inspection__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Original Inspection</label>
+        <referenceTo>CLQ_Inspection__c</referenceTo>
+        <relationshipLabel>Associated Inspections (Follow-Ups)</relationshipLabel>
+        <relationshipName>Inspections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Owner_Manager__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Inspection_Owner__r.ManagerId</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Owner Manager</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Program_Transaction__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Program Transaction</label>
+        <referenceTo>CLQ_Program_Transaction__c</referenceTo>
+        <relationshipLabel>Inspections</relationshipLabel>
+        <relationshipName>Inspections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Program__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Program</label>
+        <referenceTo>CLQ_Program__c</referenceTo>
+        <relationshipLabel>Inspections</relationshipLabel>
+        <relationshipName>Inspections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Program_s_Email_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Program&apos;s Email Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Program_s_Licensing_Specialist__c</fullName>
+        <externalId>false</externalId>
+        <label>Program&apos;s Licensing Specialist</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Published_to_Portal__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Published to Portal</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Reason_for_Inspection_Tool_Selection__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Provide reason if you are not selecting recommended tool</inlineHelpText>
+        <label>Reason for Inspection Tool Selection</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CLQ_Recommended_Inspection_Tool__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Recommended Inspection Tool</label>
+        <referenceTo>CLQ_Inspection_Tools__c</referenceTo>
+        <relationshipLabel>Inspections (Recommended Inspection Tool)</relationshipLabel>
+        <relationshipName>Inspections1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Report_Sent_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Report Sent Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Representative_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Representative Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Scope__c</fullName>
+        <externalId>false</externalId>
+        <label>Scope</label>
+        <picklist>
+            <controllingField>CLQ_Inspection_Type__c</controllingField>
+            <picklistValues>
+                <fullName>Full</fullName>
+                <default>false</default>
+                <controllingFieldValues>Amendment - change of capacity</controllingFieldValues>
+                <controllingFieldValues>Amendment - change of location</controllingFieldValues>
+                <controllingFieldValues>Annual</controllingFieldValues>
+                <controllingFieldValues>Compliance</controllingFieldValues>
+                <controllingFieldValues>Follow-up</controllingFieldValues>
+                <controllingFieldValues>Full</controllingFieldValues>
+                <controllingFieldValues>Monitor</controllingFieldValues>
+                <controllingFieldValues>Pre-license</controllingFieldValues>
+                <controllingFieldValues>Provisional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Focused</fullName>
+                <default>false</default>
+                <controllingFieldValues>Amendment - change of capacity</controllingFieldValues>
+                <controllingFieldValues>Amendment - change of location</controllingFieldValues>
+                <controllingFieldValues>Annual</controllingFieldValues>
+                <controllingFieldValues>Compliance</controllingFieldValues>
+                <controllingFieldValues>Follow-up</controllingFieldValues>
+                <controllingFieldValues>Full</controllingFieldValues>
+                <controllingFieldValues>Monitor</controllingFieldValues>
+                <controllingFieldValues>Provisional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partial</fullName>
+                <default>false</default>
+                <controllingFieldValues>Amendment - change of capacity</controllingFieldValues>
+                <controllingFieldValues>Amendment - change of location</controllingFieldValues>
+                <controllingFieldValues>Annual</controllingFieldValues>
+                <controllingFieldValues>Complaint</controllingFieldValues>
+                <controllingFieldValues>Compliance</controllingFieldValues>
+                <controllingFieldValues>Follow-up</controllingFieldValues>
+                <controllingFieldValues>Full</controllingFieldValues>
+                <controllingFieldValues>Incident/Injury</controllingFieldValues>
+                <controllingFieldValues>Monitor</controllingFieldValues>
+                <controllingFieldValues>Pre-license</controllingFieldValues>
+                <controllingFieldValues>Provisional</controllingFieldValues>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Specialist_Reviewer__c</fullName>
+        <externalId>false</externalId>
+        <label>Specialist/Reviewer</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Staff_in_Compliance__c</fullName>
+        <externalId>false</externalId>
+        <label>Staff in Compliance</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_State__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(CLQ_Program__r.CLQ_State__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Status_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Status Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Street_Address_1__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_Street_Address_1__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Street Address 1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Street_Address_2__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_Street_Address_2__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Street Address 2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Submitted_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Submitted By</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Inspections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Submitted_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Submitted Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Supervisor_Approver__c</fullName>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Manager.FirstName &amp;&quot; &quot;&amp;  CreatedBy.Manager.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Supervisor/Approver</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Total_Staff__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Staff</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Type_of_Audit__c</fullName>
+        <externalId>false</externalId>
+        <label>Type of Audit</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Onsite</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Desk Review</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Use_Rules_Effective_On__c</fullName>
+        <externalId>false</externalId>
+        <label>Use Rules Effective On</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Visit_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Visit Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>To be Scheduled</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Visit Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Visit_Tool__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Visit Tool</label>
+        <referenceTo>CLQ_Visit_Tool__c</referenceTo>
+        <relationshipLabel>Inspections</relationshipLabel>
+        <relationshipName>Inspections</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Zip_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>CLQ_Program__r.CLQ_Zip_Code__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Zip Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>External_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>External Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Final_Approved_onsite_rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Final Approved onsite rating</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inspection_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Inspection_Complete__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Onsite Complete?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Inspection_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Inspection Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Withdraw</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Deferral</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Return for Revision</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Deleted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Resubmitted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Internal_Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Internal Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IsApproved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Inspection complete approval indicator</description>
+        <externalId>false</externalId>
+        <label>IsApproved</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Onsite_Rating__c</fullName>
+        <externalId>false</externalId>
+        <label>Onsite Rating</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Inspection</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CLQ_Inspection_Type__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>OnsiteComplChek_CLQ_Inspection</fullName>
+        <filterScope>Queue</filterScope>
+        <label>OnsiteComplChek</label>
+        <queue>OnsiteComplChek</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>Inspection# {000000}</displayFormat>
+        <label>Inspection No</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Inspections</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>CLQ_Day_Camp_Audit</fullName>
+        <active>true</active>
+        <description>Day Camp Audit for Day Camp Registration</description>
+        <label>Day Camp Audit</label>
+        <picklistValues>
+            <picklist>CLQ_Email_Full_Inspection_Report__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Email_Summay_Report__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Inspection_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returned to Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revised</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Supervisor %2F Approver Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Inspection_Type__c</picklist>
+            <values>
+                <fullName>Amendment - change of capacity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Amendment - change of location</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incident%2FInjury</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monitor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-license</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provisional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Is_Follow_Up_Inspection_Required__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Method__c</picklist>
+            <values>
+                <fullName>On-site Inspection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telephone Contact</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Notice__c</picklist>
+            <values>
+                <fullName>Announced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unannounced</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_On_Site_Representative_Present__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Scope__c</picklist>
+            <values>
+                <fullName>Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Type__c</picklist>
+            <values>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Type_of_Audit__c</picklist>
+            <values>
+                <fullName>Desk Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Onsite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Visit_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To be Scheduled</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Visit Completed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Inspection_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deferral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resubmitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return for Revision</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Deleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Withdraw</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Onsite_Rating__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CLQ_Inspection</fullName>
+        <active>true</active>
+        <label>Inspection</label>
+        <picklistValues>
+            <picklist>CLQ_Email_Full_Inspection_Report__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Email_Summay_Report__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Inspection_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returned to Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revised</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Supervisor %2F Approver Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Inspection_Type__c</picklist>
+            <values>
+                <fullName>Amendment - change of capacity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Amendment - change of location</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incident%2FInjury</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monitor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-license</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provisional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Is_Follow_Up_Inspection_Required__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Method__c</picklist>
+            <values>
+                <fullName>On-site Inspection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telephone Contact</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Notice__c</picklist>
+            <values>
+                <fullName>Announced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unannounced</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_On_Site_Representative_Present__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Scope__c</picklist>
+            <values>
+                <fullName>Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Type__c</picklist>
+            <values>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Type_of_Audit__c</picklist>
+            <values>
+                <fullName>Desk Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Onsite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Visit_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To be Scheduled</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Visit Completed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Inspection_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deferral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resubmitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return for Revision</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Deleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Withdraw</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Onsite_Rating__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Onsite_Visit_Record_Type</fullName>
+        <active>false</active>
+        <label>Onsite Visit Record Type</label>
+        <picklistValues>
+            <picklist>CLQ_Email_Full_Inspection_Report__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Email_Summay_Report__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Inspection_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Processing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Returned to Specialist</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Revised</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Under Supervisor %2F Approver Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Inspection_Type__c</picklist>
+            <values>
+                <fullName>Amendment - change of capacity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Amendment - change of location</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Annual</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow-up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incident%2FInjury</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monitor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-license</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Provisional</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Is_Follow_Up_Inspection_Required__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Method__c</picklist>
+            <values>
+                <fullName>On-site Inspection</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Telephone Contact</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Notice__c</picklist>
+            <values>
+                <fullName>Announced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unannounced</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_On_Site_Representative_Present__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Scope__c</picklist>
+            <values>
+                <fullName>Focused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Full</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partial</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Type__c</picklist>
+            <values>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Type_of_Audit__c</picklist>
+            <values>
+                <fullName>Desk Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Onsite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Visit_Status__c</picklist>
+            <values>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>To be Scheduled</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Visit Completed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Inspection_Status__c</picklist>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Deferral</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Complete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Approval</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resubmitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return for Revision</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Deleted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Withdraw</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Onsite_Rating__c</picklist>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CLQ_Inspection_Due_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CLQ_Inspection_Notice__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CLQ_Inspection_Type__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>CLQ_On_Site_Representative_Validation</fullName>
+        <active>true</active>
+        <description>On site representative is mandatory If &apos;yes&apos; is selected for On-site representative present.</description>
+        <errorConditionFormula>(IF
+(AND
+(ISPICKVAL(CLQ_On_Site_Representative_Present__c ,&quot;Yes&quot;), ISBLANK(CLQ_On_Site_Representative__c)), true,false))</errorConditionFormula>
+        <errorDisplayField>CLQ_On_Site_Representative__c</errorDisplayField>
+        <errorMessage>Please enter On Site Representative</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CLQ_Representative_Email_Check</fullName>
+        <active>true</active>
+        <description>Representative Email is mandatory If &apos;yes&apos; is selected for On-site representative present.</description>
+        <errorConditionFormula>(IF
+(AND
+(ISPICKVAL(CLQ_On_Site_Representative_Present__c ,&quot;Yes&quot;), ISBLANK( CLQ_Representative_Email__c )), true,false))</errorConditionFormula>
+        <errorDisplayField>CLQ_Representative_Email__c</errorDisplayField>
+        <errorMessage>Please enter Representative Email</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Follow_up_Inspection_Date_is_Required</fullName>
+        <active>true</active>
+        <description>If the follow inspection required is &apos;Yes&apos; inspection follow up date is required.</description>
+        <errorConditionFormula>AND(ISPICKVAL(CLQ_Is_Follow_Up_Inspection_Required__c,&apos;Yes&apos;), ISNULL(CLQ_Follow_Up_Inspection_Date__c))</errorConditionFormula>
+        <errorMessage>Follow Up Inspection Date is Required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Reviewers_cannot_change_Inspec_ownership</fullName>
+        <active>true</active>
+        <description>Inspection ownership cannot be changed by reviewers</description>
+        <errorConditionFormula>AND (ISCHANGED( OwnerId ),($Profile.Name = &apos;Standard User JFS&apos;))</errorConditionFormula>
+        <errorMessage>You cannot change record ownership</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>CLQ_Create_Follow_Up</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Follow Up</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/20.0/connection.js&quot;)} 
+var url = parent.location.href; 
+
+var iItems = sforce.connection.query(&quot;select Id,CLQ_Inspection_No__c,CLQ_Rule__c, CLQ_Result__c from CLQ_Rules_Inspected__c where CLQ_Inspection_No__c = &apos;{!CLQ_Inspection__c.Id}&apos; AND CLQ_Result__c = &apos;Non-Compliant&apos;&quot;);
+var user = sforce.connection.getUserInfo().userId; 
+var username = sforce.connection.getUserInfo().userFullName; 
+var str = user; 
+str = str.substring(0, str.length - 3); 
+
+iiList = iItems.getArray(&quot;records&quot;); 
+
+if(iiList.length &gt; 0){ 
+var insp = new sforce.SObject(&quot;CLQ_Inspection__c&quot;); 
+insp.CLQ_Inspection_Type__c = &apos;Follow-up&apos;;
+insp.CLQ_Inspection_Owner__c = str;
+insp.CLQ_Visit_Status__c = &apos;To be Scheduled&apos;;
+insp.CLQ_Program__c = &apos;{!CLQ_Inspection__c.CLQ_ProgramId__c}&apos;;
+insp.CLQ_Original_Inspection__c=&apos;{!CLQ_Inspection__c.Id}&apos;;
+
+var result=sforce.connection.create([insp]); 
+
+if (result[0].getBoolean(&quot;success&quot;) == false ) 
+{ 
+alert(&quot;An error occurred creating a Follow up Visit.&quot;+result[0].get(&quot;errors&quot;)); 
+} 
+else{
+iiList = iItems.getArray(&quot;records&quot;); 
+var insertII = []; 
+
+for (var i=0; i&lt; iiList.length; i++) { 
+var tiItem = iiList[i]; 
+var iItem = new sforce.SObject(&quot;CLQ_Rules_Inspected__c&quot;); 
+iItem.CLQ_Rule__c =tiItem.CLQ_Rule__c; 
+iItem.CLQ_Inspection_No__c = result[0].id; 
+
+insertII.push(iItem); 
+} 
+var result1=sforce.connection.create(insertII); 
+if (result1[0].getBoolean(&quot;success&quot;) == false ) 
+{ 
+alert(&quot;An error occurred creating a Follow up Visit1.&quot;+result1[0].get(&quot;errors&quot;)); 
+}else{ 
+window.location = &apos;/&apos;+result[0].id; 
+} 
+}
+}
+else{ 
+alert(&quot;Cannot create a Follow-up as there are no &apos;Non-Compliant&apos; Rules for this Visit&quot;); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CLQ_Delete_Inspection</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Delete Inspection</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/33.0/apex.js&quot;)} 
+
+var Ins= new sforce.SObject(&quot;CLQ_Inspection__c&quot;); 
+Ins.Id = &apos;{!CLQ_Inspection__c.Id}&apos;;
+sforce.connection.sessionId = window.ApiUtils.getSessionId(); 
+var user = sforce.connection.getUserInfo().userId;
+var username = sforce.connection.getUserInfo().userFullName;
+var str = user;
+str = str.substring(0, str.length - 3);
+
+if(&apos;{!CLQ_Inspection__c.CLQ_Inspection_Owner__c}&apos;!= username &amp;&amp; &apos;{!CLQ_Inspection__c.CLQ_Owner_Manager__c}&apos; != str){
+alert(&apos;You donot have the permission to delete this inspection&apos;);
+}else
+if(&apos;{!CLQ_Inspection__c.CLQ_Inspection_Status__c}&apos; == &apos;Approved&apos; || &apos;{!CLQ_Inspection__c.CLQ_Inspection_Status__c}&apos; == &apos;Under Supervisor / Approver Review&apos;){
+alert(&quot;This functionality is not avaialble for an inspection that is &apos;Approved&apos; or &apos;Under Supervisor/Approver Review&apos;&quot;);
+}else{
+Ins.CLQ_Inspection_Status__c=&apos;Deleted&apos;;
+}
+var result = sforce.connection.update([Ins]); 
+if(result[0].getBoolean(&quot;success&quot;)) 
+{ 
+window.location.reload(); 
+} 
+else{ 
+alert(&apos;Error : &apos;+result); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CLQ_New_DayCamp_Audit</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New Day Camp Audit</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/a0C/e?retURL=%2Fa0C%2Fo&amp;RecordType=01236000000S9qH&amp;ent=01I36000001zoRp&amp;CF00N3600000MgRup={!$User.FirstName}+{!$User.LastName}&amp;CF00N3600000L5V6b={!CLQ_Program__c.Name}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CLQ_New_Inspection</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New Inspection</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/a0C/e?retURL=%2Fa0C%2Fo&amp;CF00N3600000MgRup={!$User.FirstName}+{!$User.LastName}&amp;CF00N3600000L5V6b={!CLQ_Program__c.Name}&amp;CF00N3600000L5V6k={!CLQ_Program_Transaction__c.Name}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CLQ_Select_Inspection_Tool</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Select Inspection Tool</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>if({!IF( CLQ_Inspection__c.CLQ_Inspection_Tool__c  != null, true,false)}){ 
+alert(&apos;An Inspection Tool has already been used for this visit.&apos;); 
+} 
+else if({! TEXT(CLQ_Inspection__c.CLQ_Scope__c)  = &quot;Partial&quot;}){ 
+alert(&apos;You can not select tool for Partial inspection&apos;); 
+} 
+else if({!IF(TEXT(CLQ_Inspection__c.CLQ_Use_Rules_Effective_On__c) =&quot;&quot;,true,false)}){ 
+alert(&apos;You can not select tool without Rules Effective date value&apos;); 
+} 
+else{ 
+window.location.href = &apos;/apex/CLQ_InspectionToolSelection?id={!CLQ_Inspection__c.Id }&apos;; 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>CLQ_Visit_Mode</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Visit Mode</masterLabel>
+        <openType>replace</openType>
+        <page>CLQ_VisitMode</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Visit_Mode_Mobile</fullName>
+        <availability>online</availability>
+        <description>This is for testing in dev</description>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Visit Mode Mobile</masterLabel>
+        <openType>replace</openType>
+        <page>CLQ_VisitModePageMobile</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

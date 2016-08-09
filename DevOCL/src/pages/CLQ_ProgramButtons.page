@@ -1,0 +1,15 @@
+<apex:page standardController="CLQ_Program__c" >
+    <apex:form >
+        <apex:pageBlock mode="maindetail">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Edit" action="Edit" />
+                <apex:commandButton value="Delete" action="Delete" />
+                <apex:commandButton value="Clone" action="Clone" />
+                <apex:commandButton value="Change Owner" action="ChangeOwner" />
+                <apex:commandButton value="Create Inspection" action="CreateInspection" />
+                <apex:commandButton value="Close" action="Close" rendered="{!CLQ_Program__c.CLQ_Program_Status__c == 'Open'}" />
+                <apex:commandButton value="Re-Open" action="Reopen" rendered="{!CLQ_Program__c.CLQ_Program_Status__c == 'Closed'}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,28 @@
+<!--
+/************************************************************************
+* Name   : RulesInfo_Actions                                            *
+* Author : Sujila R Nair                                                *
+* Desc   : Information Component for configuring Actions                *
+* ----------------------------------------------------------------------*
+* Developer     |  Date        |  Description                           *
+* ----------------------------------------------------------------------*
+* Sujila R Nair |  03/17/2016  |  Original Version                      *
+*************************************************************************/
+-->
+<apex:component >
+    <table class="table table-striped table-bordered" >
+        <caption><b>&nbsp;&nbsp;Defining Actions</b></caption>
+        <tr>
+            <td>CONTEXT{Input}</td>
+            <td>Use to set Value from Input Object <br/>
+                eg: if Input is Account object CONTEXT{Input}.Id = Account.Id
+            </td>
+        </tr>
+        <tr>
+            <td>Assign Record Type </td>
+            <td  style="white-space: nowrap">Get Record Type Id by giving Object Name and Record Type Name. <br/>
+                eg: Schema.SObjectType.<b>Account</b>.getRecordTypeInfosByName().get('<b><i>RecordType Name</i></b>').getRecordTypeId()
+            </td>
+        </tr>
+    </table>
+</apex:component>

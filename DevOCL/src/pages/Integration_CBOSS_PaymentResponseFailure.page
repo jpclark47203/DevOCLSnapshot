@@ -1,0 +1,31 @@
+<apex:page sidebar="true" controller="Integration_CBOSS_PaymentResponseFailure"  showHeader="true" standardStylesheets="false" docType="html-5.0" applyHtmlTag="true" applyBodyTag="false" action="{!Integration_LogCBOSSData}" >
+<script>
+    function colorPageBlock(pageblock, color) {if (pageblock != null) pageblock.firstChild.style.cssText = 'background-color: ' + color + ';';}
+</script>
+
+    <html lang='en'>
+
+      <head>
+          <meta charset="UTF-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
+          <title>TEST- CBOSS Integration Payment Gateway - Success Response</title>
+      </head>
+            
+         <apex:form id="cboss_form" styleClass="animated-form">    
+            <apex:pageBlock title="CBOSS Payment Not Authorized" >
+                       <apex:outputPanel id="processRegion">
+                         <apex:pageBlockSection id="redSection" columns="1" title="Online Payment Not-Authorized" rendered="true">
+                                <script>colorPageBlock(document.getElementById("{!$Component.redSection}"), "red");</script>
+ 
+                                <apex:repeat value="{!paramMap}" var="v">
+                                    <apex:outputText value="{!paramMap[v]}" label="{!v}" />
+                                </apex:repeat>
+                         </apex:pageBlockSection>
+                    </apex:outputPanel>
+             </apex:pageBlock>
+
+             <apex:commandButton value="Try Payment Again" action="javascript:window.location.href='/apex/Integration_CBOSS_PaymentRequest'" styleClass="btn btn-primary btn-spacing" />
+
+         </apex:form>
+   </html>
+</apex:page>

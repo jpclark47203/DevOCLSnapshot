@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CLQ_CA__c</fullName>
+        <externalId>false</externalId>
+        <label>CA</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_CPR__c</fullName>
+        <externalId>false</externalId>
+        <label>CPR</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Course_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Course Name</label>
+        <picklist>
+            <picklistValues>
+                <fullName>First Aid</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conscious Discipline</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CPR</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>How to increase the</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Management of Communicable Disease</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Supporting Children</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Child Abuse Recognition and Prevention</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Credits__c</fullName>
+        <externalId>false</externalId>
+        <label>Credits</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Current_Period_End__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Period End</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Current_Period_Start__c</fullName>
+        <externalId>false</externalId>
+        <label>Current Period Start</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Expiration_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Expiration Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_External_Id__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <description>This field is used an External ID for Staff Training object.</description>
+        <externalId>true</externalId>
+        <label>External_Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_FA__c</fullName>
+        <externalId>false</externalId>
+        <label>FA</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Full_Course_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Full Course Completed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Highest_Verified_Education__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( CLQ_Staff_Record__r.CLQ_Highest_Verified_Education_Level__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Highest Verified Education</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Hire_Date_From__c</fullName>
+        <externalId>false</externalId>
+        <label>Hire Date From</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Hire_Date_To__c</fullName>
+        <externalId>false</externalId>
+        <label>Hire Date To</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>Hours</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Inspection__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Inspection</label>
+        <referenceTo>CLQ_Inspection__c</referenceTo>
+        <relationshipLabel>Staff Training</relationshipLabel>
+        <relationshipName>Staff_Training</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_MCD__c</fullName>
+        <externalId>false</externalId>
+        <label>MCD</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_OPR_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>OPR Hours</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_On_Site_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>On Site Hours</label>
+        <precision>9</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Staff_Position__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( CLQ_Staff_Record__r.CLQ_Position__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Staff Position</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CLQ_Staff_Record__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Staff Name</label>
+        <referenceTo>CLQ_Staff_Record__c</referenceTo>
+        <relationshipLabel>Staff Training</relationshipLabel>
+        <relationshipName>Staff_Training</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Verified</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not-Verified</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Training_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Training Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Training_Met__c</fullName>
+        <externalId>false</externalId>
+        <label>Training Met</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Training_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Training Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Professional Development</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CLQ_Units__c</fullName>
+        <externalId>false</externalId>
+        <label>Units</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Staff Training</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>{0000}</displayFormat>
+        <label>Staff Training No</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Staff Training</pluralLabel>
+    <recordTypes>
+        <fullName>CLQ_Health_Safety_Training</fullName>
+        <active>true</active>
+        <description>Courses related to Health &amp; Safety</description>
+        <label>Health &amp; Safety Training</label>
+        <picklistValues>
+            <picklist>CLQ_Course_Name__c</picklist>
+            <values>
+                <fullName>CPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Child Abuse Recognition and Prevention</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conscious Discipline</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>First Aid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>How to increase the</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Management of Communicable Disease</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting Children</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Status__c</picklist>
+            <values>
+                <fullName>Not-Verified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Verified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Training_Met__c</picklist>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Training_Type__c</picklist>
+            <values>
+                <fullName>Professional Development</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>CLQ_Professional_Development_Training</fullName>
+        <active>true</active>
+        <description>Courses related to Professional Development</description>
+        <label>Professional Development Training</label>
+        <picklistValues>
+            <picklist>CLQ_Course_Name__c</picklist>
+            <values>
+                <fullName>CPR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Child Abuse Recognition and Prevention</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conscious Discipline</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>First Aid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>How to increase the</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Management of Communicable Disease</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Supporting Children</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Status__c</picklist>
+            <values>
+                <fullName>Not-Verified</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Verified</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Training_Met__c</picklist>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>CLQ_Training_Type__c</picklist>
+            <values>
+                <fullName>Professional Development</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>CLQ_Course_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CLQ_Staff_Record__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

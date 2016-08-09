@@ -1,0 +1,12 @@
+<apex:page standardController="Case" extensions="CLQ_CreateInspectionExtension" action="{!onLoad}">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageMessages >
+            </apex:pageMessages>
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton action="{!onOK}" value="Ok"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>  
+</apex:page>

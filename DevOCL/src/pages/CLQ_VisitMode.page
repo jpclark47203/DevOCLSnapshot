@@ -1,0 +1,265 @@
+<!-- 
+This page is used for on site visit. Class will list down all the rules for inspection and user can select the findings during the visit
+-->
+
+<apex:page applyBodyTag="false" docType="html-5.0" standardStylesheets="false" standardController="CLQ_Inspection__c"  showHeader="false" sidebar="false" extensions="CLQ_VisitModeController" action="{!onLoad}"> 
+    
+    <!--****Head Start***** -->
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+        
+    <style type="text/css">
+        .customPopup {
+        background-color: white;
+        left: 20%;
+        padding: 10px;
+        position: absolute;
+        z-index: 9999;
+        /* These are the 3 css properties you will need to tweak so the pop 
+                                up displays in the center of the screen. First set the width. Then set 
+                                margin-left to negative half of what the width is. You can also add 
+                                the height property for a fixed size pop up.*/
+        width: 60%;
+        top: 20%;
+        }
+
+    .disabledTextBox {
+        background-color: white;
+        border: 1px solid;
+        color: black;
+        cursor: default;
+        width: 90px;
+        display: table;
+        padding: 2px 1px;
+        text-align:right;
+        }   
+
+    .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+        } 
+    .container-fluid {
+        margin-top: 10px;
+        }
+    .center {
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+        }     
+    
+    </style>
+    </head>
+    <!--****Body Start***** -->
+    <body>
+        <apex:form id="theForm" title="Visit Mode">
+            <div class="container-fluid">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <apex:pageBlock id="functionBlock" >
+                        <apex:messages />
+                        <div>
+                                <div class="center">
+                                    
+                                    <apex:commandButton action="{!onSave}" value="Save"  status="counterStatus"  styleClass="btn btn-info" />
+                                    <apex:commandButton action="{!onSaveandClose}" value="Save & Close"  status="counterStatus" styleClass="btn btn-info"/>
+                                    <apex:commandButton action="{!onCancel}" value="Cancel"  status="counterStatus"  styleClass="btn btn-info"/>
+                                    <apex:commandButton action="{!onCancel}" value="Close Visit Mode"  status="counterStatus" styleClass="btn btn-info"/>
+                                    <apex:commandButton action="{!markAllCompliant}" value="Mark Compliant"  reRender="therulePanel" styleClass="btn btn-info"/>
+                                </div>
+                            </div>
+                            <apex:outputPanel id="therulePanel">
+                                <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Search Filter: 
+                                    <apex:selectList value="{!filtervalue}" size="1" multiselect="false">
+                                        <apex:selectOptions value="{!filterOptions}"/>
+                                    </apex:selectList>&ensp;Domain
+                                    <apex:selectList value="{!domainfiltervalue}" size="1" multiselect="false">
+                                        <apex:selectOptions value="{!domainOptions}"/>
+                                    </apex:selectList>
+                                    <apex:commandButton action="{!onSearch}" value="Search"  reRender="therulePanel" styleclass="btn btn-primary"/>
+                                </div>
+                                </div>  
+                                 <div class="panel panel-info">    
+                                    <apex:repeat value="{!domainRuleWrapperList}" var="domainGroup" id="theRepeat">
+                                        <apex:outputText rendered="{!domainGroup.showDomain}" id="domainRenderPanel">
+                                        <div class="panel-heading"> {!domainGroup.domainName} </div>
+                                            <!--<apex:pageBlockSection columns="1" title="{!var.domainName}"  collapsible="true" id="domainSection">-->
+                                                <!--
+                                                <div class="row">
+                                                    <div class="col-sm-2">
+                                                        Rule Name
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        Description
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        Result
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        Findings
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        Finding Description
+                                                    </div>
+                                                    <apex:repeat value="{!domainGroup.rulelist}" var="rule">
+                                                    <apex:outputText rendered="{!rule.showRule}">
+                                                        
+                                                            <div class="col-sm-2">
+                                                            {!rule.ruleRecord.CLQ_Domain_Rule__r.CLQ_Rule__r.CLQ_Short_Name__c}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                            {!rule.ruleRecord.CLQ_Domain_Rule__r.CLQ_Rule__r.CLQ_Description__c}
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                            <apex:inputField value="{!rule.ruleRecord.CLQ_Result__c}"/>
+                                                                <apex:commandLink action="{!popupOnLoad}" rerender="popup"  status="counterStatus">
+                                                                    <apex:param assignTo="{!selectedInspectedRule}" value="{!rule.ruleRecord.id}" name="selectedInspectedRule"/>
+                                                                    <apex:param assignTo="{!selectedRule}" value="{!rule.ruleRecord.CLQ_Domain_Rule__c}" name="selectedRule"/>
+                                                                    <apex:param assignTo="{!resultselected}" value="{!rule.ruleRecord.CLQ_Result__c}" name="resultselected"/>
+                                                                    <apex:image url="{!$Resource.CLQ_VisitModeIcon}" width="20" height="20"/>
+                                                                </apex:commandLink>
+                                                            </div>
+                                                            <div class="col-sm-2">
+                                                                <apex:outputText value="{!rule.sfindingCode}" escape="false" />
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <apex:outputText value="{!rule.sfindingDescription}" escape="false" />
+                                                            </div>
+                                                        
+                                                    </apex:outputText>
+                                                </apex:repeat>
+                                                </div>-->
+                                                
+                                            
+                                            <div class="panel-body" id="theTableofRules">
+                                                
+                                                <table class="table table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Rule Name</th>
+                                                            <th>Regulations</th>
+                                                            <th>Description</th>
+                                                            <th>Result</th>
+                                                            <th>Findings</th>
+                                                            <th>Finding Description</th>
+                                                            <th> Attachment</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <apex:repeat value="{!domainGroup.rulelist}" var="rule">
+                                                            <apex:outputText rendered="{!rule.showRule}">
+                                                            <tr>
+                                                                <td>
+                                                                    <apex:outputField value="{!rule.ruleRecord.CLQ_Domain_Rule__r.CLQ_Rule__r.CLQ_Short_Name__c}" />
+                                                                </td>
+                                                                <td>
+                                                                    <apex:outputText value="{!rule.regulation}" />
+                                                                </td>
+                                                                <td>
+                                                                    <apex:outputField value="{!rule.ruleRecord.CLQ_Domain_Rule__r.CLQ_Rule__r.CLQ_Description__c}" />
+                                                                </td>
+                                                                <td>
+                                                                    <apex:inputField value="{!rule.ruleRecord.CLQ_Result__c}">
+                                                                        
+                                                                    </apex:inputField>
+                                                                    <apex:commandLink action="{!popupOnLoad}" rerender="popup"  status="counterStatus">
+                                                                        <apex:param assignTo="{!selectedInspectedRule}" value="{!rule.ruleRecord.id}" name="selectedInspectedRule"/>
+                                                                        <apex:param assignTo="{!selectedRule}" value="{!rule.ruleRecord.CLQ_Domain_Rule__c}" name="selectedRule"/>
+                                                                        <apex:param assignTo="{!resultselected}" value="{!rule.ruleRecord.CLQ_Result__c}" name="resultselected"/>
+                                                                        <apex:image url="{!$Resource.CLQ_VisitModeIcon}" width="20" height="20"/>
+                                                                    </apex:commandLink>
+                                                                </td>
+                                                                <td>
+                                                                    
+                                                                    <apex:outputText value="{!rule.sfindingCode}" escape="false" />
+                                                                </td>
+                                                                <td>
+                                                                    <apex:outputText value="{!rule.sfindingDescription}" escape="false" />
+                                                                </td>
+                                                                <td>
+                                                                    <apex:outputLink onclick="window.open('/apex/CLQ_VisitModeAttachment?id={!rule.ruleRecord.id}','','width=500,height=500')">
+                                                                        <apex:image url="{!$Resource.CLQ_attachment}" width="20" height="20"/>
+                                                                        </apex:outputLink>
+                                                                </td>
+                                                            </tr>
+                                                        </apex:outputText>  
+                                                        </apex:repeat>
+                                                    </tbody>
+                                                </table> 
+                          
+                                        </div>      
+                    <!--</apex:pageBlockSection>
+                    </div>-->       </apex:outputText>
+                                    </apex:repeat>
+                                    
+                                </div> 
+                            </apex:outputPanel>
+                            <div>
+                                <div class="center">
+                                    <apex:commandButton action="{!onSave}" value="Save"  status="counterStatus"  styleClass="btn btn-info" />
+                                    <apex:commandButton action="{!onSaveandClose}" value="Save & Close"  status="counterStatus" styleClass="btn btn-info"/>
+                                    <apex:commandButton action="{!onCancel}" value="Cancel"  status="counterStatus"  styleClass="btn btn-info"/>
+                                    <apex:commandButton action="{!onCancel}" value="Close Visit Mode"  status="counterStatus" styleClass="btn btn-info"/>
+                                    <apex:commandButton action="{!markAllCompliant}" value="Mark Compliant"  reRender="therulePanel" styleClass="btn btn-info"/>
+                                </div>
+                            </div>  
+                        </apex:pageBlock>
+                        <apex:actionstatus id="counterStatus">
+                            <apex:facet name="start">
+                                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                                    <div class="waitingHolder" style="top: 100px; width: 91px;">
+                                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                                        <span class="waitingDescription">Loading...</span>
+                                    </div>
+                                </div>
+                            </apex:facet>
+                        </apex:actionstatus>
+                        <apex:outputPanel id="popup" >
+                            <apex:outputPanel layout="block" styleClass="popupBackground" rendered="{!showPopup}"/>
+                                <apex:outputPanel id="popInnerOutputPnl" styleClass="customPopup" rendered="{!showPopup}">
+                                    <apex:pageBlock id="findingblock">
+                                        <div class="panel-body">
+                                            <div class="center">
+                                                <apex:commandButton value="Save" title="Save" action="{!savePopUp}" styleclass="btn btn-primary" rerender="therulePanel,popup" style="float: inherit;"/>
+                                                <apex:commandButton value="Close" title="Close" action="{!closePopUp}" rerender="therulePanel,popup" styleclass="btn btn-default" style="float: inherit;"/>
+                                            </div>
+                                            <apex:outputPanel id="tablepanel">
+                                                <table class="table table-condensed">
+                                                    <tr>
+                                                        <th>Select</th>
+                                                        <th>Standard Findings</th>
+                                                        <th>Description</th>
+                                                        <th>Risk Level</th>
+                                                    </tr>
+                                                    <apex:repeat value="{!popupWrapperList}" var="rulefinding">
+                                                        <tr>
+                                                            <td><apex:inputCheckbox value="{!rulefinding.isSelected}" /></td>
+                                                            <td><apex:outputField value="{!rulefinding.finding.CLQ_Standard_Finding__c}" /></td>
+                                                            <td><apex:inputField value="{!rulefinding.finding.CLQ_Description__c}" /></td>
+                                                            <td><apex:outputField value="{!rulefinding.finding.CLQ_Risk_Level__c}" /></td>
+                                                        </tr>
+                                                    </apex:repeat>
+                                                </table>
+                            
+                                            </apex:outputPanel>
+                                        </div>
+                                    </apex:pageBlock>
+                                </apex:outputPanel>
+                
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                </div>
+            </apex:form>
+        </body>
+</apex:page>
